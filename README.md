@@ -141,7 +141,7 @@ Specifies the first entry to be returned from the collection.
 </table>
 
 
-Successful Response
+**Successful Response**
 
 ```
 {
@@ -192,7 +192,7 @@ GET /recommendations/:film_id
 
 ```
 
-Parameters
+**Parameters**
 
 <table>
   <tr>
@@ -233,7 +233,7 @@ Specifies the first entry to be returned from the collection.
 </table>
 
 
-Successful Response
+**Successful Response**
 
 ```
 status : "success",
@@ -280,14 +280,14 @@ data : {
 ---
 
 
-**Deliverables**
+## Deliverables
 
 Complete the requirements above to the best of your ability.  Upload a Git repository with frequent commits and descriptive commit messages.
 
 ---
 
 
-**Evaluation**
+## Evaluation
 
 Your code will be evaluated based on the following criteria:
 
