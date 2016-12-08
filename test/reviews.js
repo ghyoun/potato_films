@@ -97,4 +97,58 @@ describe('Reviews API', function() {
       });
     });
   });
+
+  describe('behavior', function() {
+    describe('sort', function() {
+      it('sorts ascending by default', function(done) {
+        done();
+      });
+
+      it('sorts ascending explicitly', function(done) {
+        done();
+      });
+
+      it('sorts descending explicitly', function(done) {
+        done();
+      });
+    });
+
+    describe('order_by', function() {
+      it('orders by id by default', function(done) {
+        done();
+      });
+
+      it('orders by id explicitly', function(done) {
+        done();
+      });
+
+      it('orders by rating explicitly', function(done) {
+        done();
+      });
+
+      it('orders by description explicitly', function(done) {
+        done();
+      });
+    });
+
+    describe('limit', function() {
+      it('limits to 10 records by default', function(done) {
+        done();
+      });
+
+      it('limits to 5 records explicitly', function(done) {
+        done();
+      });
+    });
+
+    describe('offset', function() {
+      it('offsets 0 records by default', function(done) {
+        done();
+      });
+
+      it('offsets 10 records explicitly', function(done) {
+        done();
+      });
+    });
+  });
 });
