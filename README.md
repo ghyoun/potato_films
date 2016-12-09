@@ -201,14 +201,6 @@ GET /recommendations/:film_id
     <td>Description</td>
   </tr>
   <tr>
-    <td>sort</td>
-    <td>string</td>
-    <td>(optional)
-The sort order of the "recommendations" data.
-Possible values: asc, desc
-Default: desc</td>
-  </tr>
-  <tr>
     <td>order_by</td>
     <td>string</td>
     <td>(optional)
