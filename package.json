@@ -1,0 +1,22 @@
+{
+  "name": "fresh-potatoes",
+  "version": "1.0.0",
+  "description": "Your freshest place for film-related data",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --ignore spec/ index.js",
+    "test": "mocha --recursive --reporter spec"
+  },
+  "author": "GA Credentials",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "sqlite": "^2.2.3"
+  }
+}
