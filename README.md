@@ -169,7 +169,6 @@ Specifies the first entry to be returned from the collection.
 
 To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a parent film’s id. The retrieved films should have been released within 15 years (± 15) of the parent. The endpoint should allow developers to:
 
-* Sort
 * Order
 * Paginate
 * Set a maximum number of returned records
