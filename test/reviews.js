@@ -8,147 +8,157 @@ function ok(expression, message) {
 }
 
 describe('Reviews API', function() {
-  it('returns status 200', function(done) {
+  it('has param defaults', function(done) {
     request
-      .get('/films/1/reviews')
+      .get('/films/6/reviews')
       .expect('Content-Type', /json/)
-      .expect(200, done);
+      .expect(200, {
+        reviews: [
+          {
+            id: 3076,
+            rating: 1,
+            content: "Turns in a performance that is insolent while managing to stay squeamish as the flowery evil genius."
+          },
+          {
+            id: 16047,
+            rating: 3,
+            content: "Appears indifferent if not overwrought as the lucky monster clown."
+          },
+          {
+            id: 18229,
+            rating: 5,
+            content: "Looks perpetually prosaic and at the same time wacky as the moldy chosen one."
+          }
+        ],
+        meta: {
+          total: 3,
+          limit: 10,
+          offset: 0
+        }
+      }, done);
   });
 
-  it('returns Content-Type JSON', function(done) {
-    request
-      .get('/films/1/reviews')
-      .expect('Content-Type', /json/, done);
-  });
-
-  describe('contract', function() {
-    describe('data', function() {
-      it('key exists', function(done) {
-        request
-          .get('/films/1/reviews')
-          .expect(function(res) {
-            ok('data' in res.body, 'Data key missing in response body');
-          }).end(done);
-      });
-
-      it('is an array', function(done) {
-        request
-          .get('/films/1/reviews')
-          .expect(function(res) {
-            ok(Array.isArray(res.body.data), 'Data is not an array');
-          }).end(done);
-      });
-
-      describe('review object', function() {
-        it('has id', function(done) {
-          request
-            .get('/films/1/reviews')
-            .expect(function(res) {
-              ok('id' in res.body.data[0], '"id" key missing');
-              ok(typeof res.body.data[0].id === 'number', '"id" is wrong type');
-            }).end(done);
-        });
-
-        it('has rating', function(done) {
-          request
-            .get('/films/1/reviews')
-            .expect(function(res) {
-              ok('rating' in res.body.data[0], '"rating" key missing');
-              ok(typeof res.body.data[0].rating === 'number', '"rating" is wrong type');
-            }).end(done);
-        });
-
-        it('has content', function(done) {
-          request
-            .get('/films/1/reviews')
-            .expect(function(res) {
-              ok('content' in res.body.data[0], '"content" key missing');
-              ok(typeof res.body.data[0].content === 'string', '"content" is wrong type');
-            }).end(done);
-        });
-      });
-    })
-
-    describe('meta', function() {
-      it('key exists', function(done) {
-        request
-          .get('/films/1/reviews')
-          .expect(function(res) {
-            ok('meta' in res.body, 'Meta key missing in response body');
-          }).end(done);
-      });
-
-      it('has limit', function(done) {
-        request
-          .get('/films/1/reviews')
-          .expect(function(res) {
-            ok('limit' in res.body.meta, '"limit" key missing');
-            ok(typeof res.body.meta.limit === 'number', '"limit" is wrong type');
-          }).end(done);
-      });
-
-      it('has offset', function(done) {
-        request
-          .get('/films/1/reviews')
-          .expect(function(res) {
-            ok('offset' in res.body.meta, '"offset" key missing');
-            ok(typeof res.body.meta.offset === 'number', '"offset" is wrong type');
-          }).end(done);
-      });
-    });
-  });
-
-  describe('behavior', function() {
-    describe('sort', function() {
-      it('sorts ascending by default', function(done) {
-        done();
-      });
-
-      it('sorts ascending explicitly', function(done) {
-        done();
-      });
-
-      it('sorts descending explicitly', function(done) {
-        done();
-      });
+  describe('ordering', function() {
+    it('can change sort direction', function(done) {
+      request
+        .get('/films/16/reviews?sort=desc')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+          reviews: [
+            {
+              id: 19529,
+              rating: 1,
+              content: "Looks perpetually ill-defined and smelly as the trashy toadie."
+            },
+            {
+              id: 17151,
+              rating: 5,
+              content: "Seems diminutive if not loving as the godly snoop."
+            },
+            {
+              id: 12293,
+              rating: 4,
+              content: "Turns in a performance that is craven but frail as the pointless technical pacifist."
+            },
+            {
+              id: 8431,
+              rating: 1,
+              content: "Turns in a performance that is feeble yet somehow short as the acrid reluctant guardian angel."
+            }
+          ],
+          meta: {
+            total: 4,
+            limit: 10,
+            offset: 0
+          }
+        }, done);
     });
 
-    describe('order_by', function() {
-      it('orders by id by default', function(done) {
-        done();
-      });
+    it('can sort by best rating', function(done) {
+      request
+        .get('/films/6/reviews?sort=desc&order_by=rating')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+          reviews: [
+            {
+              id: 18229,
+              rating: 5,
+              content: "Looks perpetually prosaic and at the same time wacky as the moldy chosen one."
+            },
+            {
+              id: 16047,
+              rating: 3,
+              content: "Appears indifferent if not overwrought as the lucky monster clown."
+            },
+            {
+              id: 3076,
+              rating: 1,
+              content: "Turns in a performance that is insolent while managing to stay squeamish as the flowery evil genius."
+            }
+          ],
+          meta: {
+            total: 3,
+            limit: 10,
+            offset: 0
+          }
+        }, done);
+    });
+  })
 
-      it('orders by id explicitly', function(done) {
-        done();
-      });
-
-      it('orders by rating explicitly', function(done) {
-        done();
-      });
-
-      it('orders by description explicitly', function(done) {
-        done();
-      });
+  describe('pagination', function() {
+    it('can limit results', function(done) {
+      request
+        .get('/films/16/reviews?order_by=rating&sort=DESC&limit=2')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+          reviews: [
+            {
+              id: 17151,
+              rating: 5,
+              content: "Seems diminutive if not loving as the godly snoop."
+            },
+            {
+              id: 12293,
+              rating: 4,
+              content: "Turns in a performance that is craven but frail as the pointless technical pacifist."
+            }
+          ],
+          meta: {
+            total: 4,
+            limit: 2,
+            offset: 0
+          }
+        }, done);
     });
 
-    describe('limit', function() {
-      it('limits to 10 records by default', function(done) {
-        done();
-      });
-
-      it('limits to 5 records explicitly', function(done) {
-        done();
-      });
-    });
-
-    describe('offset', function() {
-      it('offsets 0 records by default', function(done) {
-        done();
-      });
-
-      it('offsets 10 records explicitly', function(done) {
-        done();
-      });
+    it('can offset results', function(done) {
+      request
+        .get('/films/16/reviews?order_by=rating&sort=DESC&offset=1')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+          reviews: [
+            {
+              id: 12293,
+              rating: 4,
+              content: "Turns in a performance that is craven but frail as the pointless technical pacifist."
+            },
+            {
+              id: 8431,
+              rating: 1,
+              content: "Turns in a performance that is feeble yet somehow short as the acrid reluctant guardian angel."
+            },
+            {
+              id: 19529,
+              rating: 1,
+              content: "Looks perpetually ill-defined and smelly as the trashy toadie."
+            }
+          ],
+          meta: {
+            total: 4,
+            limit: 10,
+            offset: 1
+          }
+        }, done);
     });
   });
 });
