@@ -284,11 +284,11 @@ Your code will be evaluated based on the following criteria:
 
 <table>
   <tr>
-    <td>**Criteria**</td>
-    <td>**Description**</td>
-    <td>**Measured by**</td>
-    <td>**How?**</td>
-    <td>**Weight**</td>
+    <td><strong>Criteria</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Measured by</strong></td>
+    <td><strong>How?</strong></td>
+    <td><strong>Weight</strong></td>
   </tr>
   <tr>
     <td>Functionality</td>
