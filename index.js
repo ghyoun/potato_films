@@ -2,12 +2,13 @@ const db = require('sqlite'),
       express = require('express'),
       app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000,
+      DB_PATH = process.env.DB_PATH || './db/database.db';
 
 app.get('/films/:id/reviews', getFilmReviews);
 app.get('/films/:id/recommendations', getFilmRecommendations);
 
-db.open('./db/database.db')
+db.open(DB_PATH)
   .then(() => app.listen(PORT, () => console.log(`App listening on port ${PORT}`)))
   .catch((err) => console.error(err.stack));
 
