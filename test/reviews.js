@@ -3,10 +3,6 @@ const app = require('../index.js');
 const expect = require('chai').expect,
       request = require('supertest')(app);
 
-function ok(expression, message) {
-  if (!expression) throw new Error(message);
-}
-
 describe('Reviews API', function() {
   it('has param defaults', function(done) {
     request
