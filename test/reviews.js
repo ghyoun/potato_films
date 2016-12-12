@@ -31,7 +31,6 @@ describe('Reviews API', function() {
           }
         ],
         meta: {
-          total: 3,
           limit: 10,
           offset: 0
         }
@@ -67,7 +66,6 @@ describe('Reviews API', function() {
             }
           ],
           meta: {
-            total: 4,
             limit: 10,
             offset: 0
           }
@@ -97,7 +95,6 @@ describe('Reviews API', function() {
             }
           ],
           meta: {
-            total: 3,
             limit: 10,
             offset: 0
           }
@@ -124,7 +121,6 @@ describe('Reviews API', function() {
             }
           ],
           meta: {
-            total: 4,
             limit: 2,
             offset: 0
           }
@@ -154,7 +150,6 @@ describe('Reviews API', function() {
             }
           ],
           meta: {
-            total: 4,
             limit: 10,
             offset: 1
           }
