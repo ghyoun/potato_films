@@ -11,32 +11,6 @@ describe('Recommendations API', function() {
       .expect(200, {
         recommendations: [
           {
-            id: 7530,
-            title: "Falcon Teacher",
-            releaseDate: "1972-02-28",
-            genre: "Action",
-            director: [
-              "Marcia Konopelski"
-            ],
-            starring: [
-              "Brielle Koch"
-            ],
-            averageRating: null,
-            reviews: 0
-          },
-          {
-            id: 9066,
-            title: "Heat Wave Ix Judge 2",
-            releaseDate: "1968-06-23",
-            genre: "Animation",
-            director: [
-              "Lucile Kuhlman"
-            ],
-            starring: [],
-            averageRating: 1,
-            reviews: 1
-          },
-          {
             id: 5449,
             title: "The Tempest Boy Philosopher",
             releaseDate: "2014-05-19",
@@ -59,21 +33,6 @@ describe('Recommendations API', function() {
             starring: [],
             averageRating: 4,
             reviews: 3
-          },
-          {
-            id: 9710,
-            title: "Sentry Doctor",
-            releaseDate: "1980-11-25",
-            genre: "Crime",
-            director: [
-              "Lucile Kuhlman"
-            ],
-            starring: [
-              "Orie Mueller",
-              "Dell Thompson"
-            ],
-            averageRating: 3.25,
-            reviews: 8
           },
           {
             id: 6608,
@@ -100,42 +59,79 @@ describe('Recommendations API', function() {
             reviews: 3
           },
           {
-            id: 401,
-            title: "Supah Morph Teacher",
-            releaseDate: "1994-08-10",
+            id: 6504,
+            title: "Ultra Question Machine Accountant",
+            releaseDate: "2002-05-27",
             genre: "Family",
             director: [
-              "Helene Dicki"
+              "Lincoln Prosacco"
+            ],
+            starring: [
+              "Marina Romaguera",
+              "Lafayette Mills"
+            ],
+            averageRating: 4.666666666666667,
+            reviews: 6
+          },
+          {
+            id: 1057,
+            title: "Beyonder Web Developer",
+            releaseDate: "2016-01-16",
+            genre: "Family",
+            director: [
+              "Javier Moore"
             ],
             starring: [],
             averageRating: 2,
-            reviews: 2
+            reviews: 1
           },
           {
-            id: 3474,
-            title: "Quantum Doctor",
-            releaseDate: "1987-02-14",
+            id: 8381,
+            title: "Ultra Elongated Man Strange Actor",
+            releaseDate: "2010-04-25",
             genre: "Family",
             director: [
-              "Delia Bartoletti"
-            ],
-            starring: [
-              "Tyshawn Yost"
-            ],
-            averageRating: 3,
-            reviews: 2
-          },
-          {
-            id: 9037,
-            title: "Green Vulture Brain Human Resources",
-            releaseDate: "1966-12-26",
-            genre: "Family",
-            director: [
-              "Amari Green"
+              "Javier Moore"
             ],
             starring: [],
-            averageRating: 2.5,
-            reviews: 2
+            averageRating: null,
+            reviews: 0
+          },
+          {
+            id: 506,
+            title: "Bolt Interpreter",
+            releaseDate: "2009-05-12",
+            genre: "Family",
+            director: [
+              "Lina Vandervort"
+            ],
+            starring: [],
+            averageRating: 3,
+            reviews: 1
+          },
+          {
+            id: 9004,
+            title: "Red Redeemer Actor",
+            releaseDate: "1998-01-14",
+            genre: "Family",
+            director: [
+              "Keely Kreiger"
+            ],
+            starring: [],
+            averageRating: 3.25,
+            reviews: 4
+            },
+          {
+            id: 7602,
+            title: "Abomination Of Hearts Writer",
+            releaseDate: "2012-03-07",
+            genre: "Family",
+            director: [
+              "Angela Abernathy"
+            ],
+            starring: [],
+            averageRating: 3.25,
+            reviews: 4
           }
         ],
         meta: {
@@ -153,30 +149,28 @@ describe('Recommendations API', function() {
         .expect(200, {
           recommendations: [
             {
-              id: 7530,
-              title: "Falcon Teacher",
-              releaseDate: "1972-02-28",
-              genre: "Action",
+              id: 5449,
+              title: "The Tempest Boy Philosopher",
+              releaseDate: "2014-05-19",
+              genre: "Crime",
               director: [
                 "Marcia Konopelski"
               ],
-              starring: [
-                "Brielle Koch"
-              ],
+              starring: [],
               averageRating: null,
               reviews: 0
             },
             {
-              id: 9066,
-              title: "Heat Wave Ix Judge 2",
-              releaseDate: "1968-06-23",
-              genre: "Animation",
+              id: 1713,
+              title: "Zatanna Advocate",
+              releaseDate: "2008-05-06",
+              genre: "Crime",
               director: [
                 "Lucile Kuhlman"
               ],
               starring: [],
-              averageRating: 1,
-              reviews: 1
+              averageRating: 4,
+              reviews: 3
             }
           ],
           meta: {
@@ -193,30 +187,28 @@ describe('Recommendations API', function() {
         .expect(200, {
           recommendations: [
             {
-              id: 401,
-              title: "Supah Morph Teacher",
-              releaseDate: "1994-08-10",
+              id: 506,
+              title: "Bolt Interpreter",
+              releaseDate: "2009-05-12",
               genre: "Family",
               director: [
-                "Helene Dicki"
+                "Lina Vandervort"
               ],
               starring: [],
-              averageRating: 2,
-              reviews: 2
+              averageRating: 3,
+              reviews: 1
             },
             {
-              id: 3474,
-              title: "Quantum Doctor",
-              releaseDate: "1987-02-14",
+              id: 9004,
+              title: "Red Redeemer Actor",
+              releaseDate: "1998-01-14",
               genre: "Family",
               director: [
-                "Delia Bartoletti"
+                "Keely Kreiger"
               ],
-              starring: [
-                "Tyshawn Yost"
-              ],
-              averageRating: 3,
-              reviews: 2
+              starring: [],
+              averageRating: 3.25,
+              reviews: 4
             }
           ],
           meta: {
