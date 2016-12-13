@@ -15,7 +15,7 @@ describe('Recommendations API', function() {
             title: "The Tempest Boy Philosopher",
             releaseDate: "2014-05-19",
             genre: "Crime",
-            director: [
+            directors: [
               "Marcia Konopelski"
             ],
             starring: [],
@@ -27,7 +27,7 @@ describe('Recommendations API', function() {
             title: "Zatanna Advocate",
             releaseDate: "2008-05-06",
             genre: "Crime",
-            director: [
+            directors: [
               "Lucile Kuhlman"
             ],
             starring: [],
@@ -39,7 +39,7 @@ describe('Recommendations API', function() {
             title: "Amazo Brain Police Officer",
             releaseDate: "2010-09-29",
             genre: "Documentary",
-            director: [
+            directors: [
               "Marcia Konopelski"
             ],
             starring: [],
@@ -51,7 +51,7 @@ describe('Recommendations API', function() {
             title: "Giant Stardust I Philosopher",
             releaseDate: "2003-10-19",
             genre: "Drama",
-            director: [
+            directors: [
               "Marcia Konopelski"
             ],
             starring: [],
@@ -63,7 +63,7 @@ describe('Recommendations API', function() {
             title: "Ultra Question Machine Accountant",
             releaseDate: "2002-05-27",
             genre: "Family",
-            director: [
+            directors: [
               "Lincoln Prosacco"
             ],
             starring: [
@@ -78,7 +78,7 @@ describe('Recommendations API', function() {
             title: "Beyonder Web Developer",
             releaseDate: "2016-01-16",
             genre: "Family",
-            director: [
+            directors: [
               "Javier Moore"
             ],
             starring: [],
@@ -90,7 +90,7 @@ describe('Recommendations API', function() {
             title: "Ultra Elongated Man Strange Actor",
             releaseDate: "2010-04-25",
             genre: "Family",
-            director: [
+            directors: [
               "Javier Moore"
             ],
             starring: [],
@@ -102,7 +102,7 @@ describe('Recommendations API', function() {
             title: "Bolt Interpreter",
             releaseDate: "2009-05-12",
             genre: "Family",
-            director: [
+            directors: [
               "Lina Vandervort"
             ],
             starring: [],
@@ -114,7 +114,7 @@ describe('Recommendations API', function() {
             title: "Red Redeemer Actor",
             releaseDate: "1998-01-14",
             genre: "Family",
-            director: [
+            directors: [
               "Keely Kreiger"
             ],
             starring: [],
@@ -126,7 +126,7 @@ describe('Recommendations API', function() {
             title: "Abomination Of Hearts Writer",
             releaseDate: "2012-03-07",
             genre: "Family",
-            director: [
+            directors: [
               "Angela Abernathy"
             ],
             starring: [],
@@ -153,7 +153,7 @@ describe('Recommendations API', function() {
               title: "The Tempest Boy Philosopher",
               releaseDate: "2014-05-19",
               genre: "Crime",
-              director: [
+              directors: [
                 "Marcia Konopelski"
               ],
               starring: [],
@@ -165,7 +165,7 @@ describe('Recommendations API', function() {
               title: "Zatanna Advocate",
               releaseDate: "2008-05-06",
               genre: "Crime",
-              director: [
+              directors: [
                 "Lucile Kuhlman"
               ],
               starring: [],
@@ -191,7 +191,7 @@ describe('Recommendations API', function() {
               title: "Bolt Interpreter",
               releaseDate: "2009-05-12",
               genre: "Family",
-              director: [
+              directors: [
                 "Lina Vandervort"
               ],
               starring: [],
@@ -203,7 +203,7 @@ describe('Recommendations API', function() {
               title: "Red Redeemer Actor",
               releaseDate: "1998-01-14",
               genre: "Family",
-              director: [
+              directors: [
                 "Keely Kreiger"
               ],
               starring: [],

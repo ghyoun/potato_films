@@ -26,23 +26,25 @@ Below is a preview of the application dependencies laid out in a package.json fi
 
 ```
 {
-  "name": "Fresh Potatoes",
-  "version": "2.0.1",
+  "name": "fresh-potatoes",
+  "version": "1.0.0",
   "description": "Your freshest place for film-related data",
-  "keywords": [],
-  "author": "Mr. Potato Head",
-  "main": "index",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha spec test",
-    "start": "node server.js"
+    "start": "nodemon --ignore spec/ index.js",
+    "test": "PORT=3333 mocha --recursive --reporter spec"
+  },
+  "author": "Mr. Potato Head",
+  "license": "CLOSED",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
   },
   "dependencies": {
-    "express": "3.4.x",
-    "handlebars": "1.0.x",
-     "sqlite3”: “3.1.x”
-  },
-  "devDependencies": {
-    "mocha": "1.10.x",
+    "express": "^4.14.0",
+    "sqlite": "^2.2.3"
   },
   "engines": {
     "node": ">= 6.8.1"
@@ -57,18 +59,14 @@ Once you’ve cloned, install the node modules: $ `npm install`
 
 Then, run your application:  $ `npm start`
 
+To run integration tests, run $ `npm test`
+
 ---
 
 
 ## Requirements
 
 The tech team wants you to satisfy the two user stories below by building two API endpoints and will look to see the tests you’ve been provided with have passed.
-
-The endpoints should adhere to the [JSend API](https://labs.omniti.com/labs/jsend) format by responding with the following types:
-
-* **Success** - a valid request was made, a valid response was delivered (outlined below)
-* **Fail** - invalid data or call conditions from the client
-* **Errors** - a server error
 
 To help satisfy these stories, set up your local database, query the database, setup the endpoints, and make the provided tests pass. Keep performance in mind - for the films table has 10,000 entries, and the reviews has 30,000 entries.
 
@@ -83,10 +81,10 @@ To help satisfy these stories, set up your local database, query the database, s
 
 To satisfy this story: build an API endpoint that retrieves reviews of a film. The endpoint should allow developers to:
 
-* Sort
-* Order
-* Paginate
-* Set a maximum number of returned records
+* Sort ascending or descending
+* Order by another field
+* Paginate by offset
+* Limit number of returned records
 
 Read on to see the documentation about the API endpoints, parameters, and what the expected success responses should look like.  
 
@@ -112,31 +110,31 @@ GET /films/:id/reviews
     <td>sort</td>
     <td>string</td>
     <td>(optional)
-The sort order of the "recommendations" data.
+The sort order of the "review" data.
 Possible values: asc, desc
-Default: desc</td>
+<strong>Default: ASC</strong></td>
   </tr>
   <tr>
     <td>order_by</td>
     <td>string</td>
     <td>(optional)
-The data field of the “recommendations” data to sort by.
+The data field of the “review” data to sort by.
 Possible values: date, rating
-Default: date</td>
+<strong>Default: id</strong></td>
   </tr>
   <tr>
-    <td>entries</td>
+    <td>limit</td>
     <td>integer</td>
     <td>(optional)
 The desired number of review results returned.
- Default: 10</td>
+ <strong>Default: 10</strong></td>
   </tr>
   <tr>
     <td>offset</td>
     <td>integer</td>
     <td>(optional)
 Specifies the first entry to be returned from the collection.
- Default: 1</td>
+ <strong>Default: 0</strong></td>
   </tr>
 </table>
 
@@ -145,16 +143,32 @@ Specifies the first entry to be returned from the collection.
 
 ```
 {
-    status: "success",
-    parent: "www.freshpotatoes.com/films/100",
-    data: {
-        "reviews" : [
-            { "id" : 10, "rating" : 3, “description”: “This movie was ok”},
-            { "id" : 120, "rating" : 5, “description”: “This movie was great”},
-            { "id" : 124, "rating" : 1, “description”: “The film was terrible”},
-            { "id" : 201, "rating" : 4, “description”: “Movie was very good”},
-        ]
-     }
+  "reviews" : [
+    {
+      "id": 10,
+      "rating": 3,
+      “description”: “This movie was ok”
+    },
+    {
+      "id": 120,
+      "rating": 5,
+      “description”: “This movie was great”
+    },
+    {
+      "id": 124,
+      "rating": 1,
+      “description”: “The film was terrible”
+    },
+    {
+      "id": 201,
+      "rating": 4,
+      “description”: “Movie was very good”
+    }
+  ],
+  "meta": {
+    "limit": 10,
+    "offset": 0
+  }
 }
 ```
 
@@ -167,27 +181,24 @@ Specifies the first entry to be returned from the collection.
 
 *"As an external developer, I want to access data using the FreshPotatoes API so that I can create film recommendations for my users based on their viewing history."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a parent film’s id. The retrieved films should have been released within 15 years (± 15) of the parent. The endpoint should allow developers to:
+To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a given film id. The retrieved films should have been released within **15 years (± 15 years)** of the parent. The endpoint should allow developers to:
 
-* Order
-* Paginate
-* Set a maximum number of returned records
+* Paginate by offset
+* Limit number of returned records
 
-In order of relevance, the recommended films returned should include films with the same:
+Ordered by relevance, the recommended films returned should include films with the same:
 
-1. genre, director, and cast members
-2. genre and director
-3. director
-4. genre and release year
-5. genre  
+1. genre
+2. director
+3. cast members
 
 ###### List Recommendations
 
-Returns a list of top-rated films released within 15 years (± 15 years) related to the matched film.
+Returns a list of top-rated films released within **15 years (± 15 years)** related to the matched film.
 
 ```
 
-GET /recommendations/:film_id
+GET /films/:film_id/recommendations
 
 ```
 
@@ -200,26 +211,18 @@ GET /recommendations/:film_id
     <td>Description</td>
   </tr>
   <tr>
-    <td>order_by</td>
-    <td>string</td>
-    <td>(optional)
-The data field of the “recommendations” data to sort by.
-Possible values: release date, film rating, title
-Default: release date</td>
-  </tr>
-  <tr>
-    <td>entries</td>
+    <td>limit</td>
     <td>integer</td>
     <td>(optional)
 The desired number of results returned.
- Default: 10</td>
+ <strong>Default: 10</strong></td>
   </tr>
   <tr>
     <td>offset</td>
     <td>integer</td>
     <td>(optional)
 Specifies the first entry to be returned from the collection.
- Default: 1</td>
+ <strong>Default: 1</strong></td>
   </tr>
 </table>
 
@@ -227,42 +230,43 @@ Specifies the first entry to be returned from the collection.
 **Successful Response**
 
 ```
-status : "success",
-parent: "www.freshpotatoes.com/films/100",
-data : {
-    "recommendations" : [
-        {
-          “id”: 109,
-          “title”: “Reservoir Dogs”,
-          “releaseDate”: “09-02-1992”,
-          “genre”: “Action”,
-          “director”: “Quentin Tarantino”,
-          “starring”: [“Harvey Keitel”, “Tim Roth”, “Michael Madsen” ],
-          “averageRating”: 4.2,
-          “reviews”: 202
-     },
-        {
-          “id”: 102,
-          “title”: “Jackie Brown”,
-          “releaseDate”: “09-15-1997”,
-          “genre”: “Action”,
-          “director”: “Quentin Tarantino”,
-          “starring”: ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
-          “averageRating”: 3.8,
-          “reviews”: 404
-     },
-        {
-          “Id”: 85,
-          “title”: “True Romance”,
-          “releaseDate”: “09-25-1993”,
-          “genre”: “Action”,
-          “director”: “Quentin Tarantino”,
-          “starring”: ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
-          “averageRating”: 4.0,
-          “reviews”: 165,098
-     },
-    ]
-   }
+{
+  "recommendations" : [
+    {
+      “id”: 109,
+      “title”: “Reservoir Dogs”,
+      “releaseDate”: “09-02-1992”,
+      “genre”: “Action”,
+      “directors”: [“Quentin Tarantino”],
+      “starring”: [“Harvey Keitel”, “Tim Roth”, “Michael Madsen” ],
+      “averageRating”: 4.2,
+      “reviews”: 202
+    },
+    {
+      “id”: 102,
+      “title”: “Jackie Brown”,
+      “releaseDate”: “09-15-1997”,
+      “genre”: “Action”,
+      “directors”: [“Quentin Tarantino”],
+      “starring”: ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
+      “averageRating”: 3.8,
+      “reviews”: 404
+    },
+    {
+      “Id”: 85,
+      “title”: “True Romance”,
+      “releaseDate”: “09-25-1993”,
+      “genre”: “Action”,
+      “directors”: [“Quentin Tarantino”],
+      “starring”: ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
+      “averageRating”: 4.0,
+      “reviews”: 165098
+    }
+  ],
+  "meta": {
+    "limit": 10,
+    "offset": 0
+  }
 }
 
 ```
