@@ -10,7 +10,7 @@ You work for FreshPotatoes.com, a website that collects anonymous reviews about 
 
 FreshPotatoes.com needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API to be built.
 
-Read through the intstructions below, fork/clone the codebase, and submit a pull request when ready!
+Read through the instructions below, fork/clone the codebase, and submit a pull request when ready!
 
 ---
 
