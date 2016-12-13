@@ -19,7 +19,7 @@ Read through the instructions below, fork/clone the codebase, and submit a pull 
 The FreshPotatoes API service is separate from their customer-facing web application.  You have been provided with starter code and tests built with Node, Express, Mocha, and SQLite, and the database schema has been created - read through the entity-relationship diagram for more context:
 
 <p align="center">
-  <img src="https://i.imgur.com/9uNjOri.png">
+  <img src="https://i.imgur.com/MuWQUfS.png">
 </p>
 
 Below is a preview of the application dependencies laid out in a package.json file:
