@@ -61,6 +61,13 @@ Then, run your application:  $ `npm start`
 
 To run integration tests, run $ `npm test`
 
+### Relevant Documentation
+* [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
+* [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
+* [SQLite docs](https://www.sqlite.org/docs.html)
+* [NPM sqlite package](https://www.npmjs.com/package/sqlite)
+* [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
+
 ---
 
 
@@ -69,6 +76,8 @@ To run integration tests, run $ `npm test`
 The tech team wants you to satisfy the two user stories below by building two API endpoints and will look to see the tests you’ve been provided with have passed.
 
 To help satisfy these stories, set up your local database, query the database, setup the endpoints, and make the provided tests pass. Keep performance in mind - for the films table has 10,000 entries, and the reviews has 30,000 entries.
+
+Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) based on the result of the request. Each API endpoint should properly handle failure, and the server should handle missing routes.
 
 *NOTE*: Do not modify the test suite provided.
 
@@ -172,7 +181,13 @@ Specifies the first entry to be returned from the collection.
 }
 ```
 
+**Failure Response**
 
+```
+{
+  "message" : "Return an explicit error here"
+}
+```
 
 ---
 
@@ -271,6 +286,13 @@ Specifies the first entry to be returned from the collection.
 
 ```
 
+**Failure Response**
+
+```
+{
+  "message" : "Return an explicit error here"
+}
+```
 
 ---
 

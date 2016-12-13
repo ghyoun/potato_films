@@ -13,7 +13,12 @@ db.open(DB_PATH)
   .catch((err) => console.error(err.stack));
 
 function getFilmReviews(req, res) {
-  res.send('Not Implemented');
+  // Example
+  db.all(`SELECT * FROM artists LIMIT 10`)
+    .then((data) => {
+      console.log('Data from SQLite:', data);
+      res.send('Not Implemented');
+    })
 }
 
 function getFilmRecommendations(req, res) {
