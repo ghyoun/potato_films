@@ -22,46 +22,16 @@ The FreshPotatoes API service is separate from their customer-facing web applica
   <img src="https://i.imgur.com/MuWQUfS.png">
 </p>
 
-Below is a preview of the application dependencies laid out in a package.json file:
-
-```
-{
-  "name": "fresh-potatoes",
-  "version": "1.0.0",
-  "description": "Your freshest place for film-related data",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --ignore spec/ index.js",
-    "test": "PORT=3333 mocha --recursive --reporter spec"
-  },
-  "author": "Mr. Potato Head",
-  "license": "CLOSED",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "nodemon": "^1.11.0",
-    "supertest": "^2.0.1"
-  },
-  "dependencies": {
-    "express": "^4.14.0",
-    "sqlite": "^2.2.3"
-  },
-  "engines": {
-    "node": ">= 6.8.1"
-  }
-}
-```
-
-
 All the files needed to start the server are in this repository. The data and database are already set up in a `database.db` file.
 
-Once you’ve cloned, install the node modules: $ `npm install`
+Once you’ve cloned, install the node modules: `$ npm install`
 
-Then, run your application:  $ `npm start`
+Then, run your application:  `$ npm start`
 
-To run integration tests, run $ `npm test`
+To run integration tests, run `$ npm test`
 
 ### Relevant Documentation
+
 * [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
 * [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
 * [SQLite docs](https://www.sqlite.org/docs.html)
