@@ -7,8 +7,8 @@
     "start": "nodemon --ignore spec/ index.js",
     "test": "PORT=3333 mocha --recursive --reporter spec"
   },
-  "author": "Mr. Potato Head",
-  "license": "CLOSED",
+  "author": "GA Credentials",
+  "license": "CC­BY­NC­SA 4.0, GNU GPLv3",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
