@@ -2,8 +2,7 @@ const db = require('sqlite'),
       express = require('express'),
       app = express();
 
-const PORT = process.env.PORT || 3000,
-      DB_PATH = process.env.DB_PATH || './db/database.db';
+const { PORT=3000, NODE_ENV='development', DB_PATH='./db/database.db' } = process.env;
 
 app.get('/films/:id/reviews', getFilmReviews);
 app.get('/films/:id/recommendations', getFilmRecommendations);
@@ -11,7 +10,7 @@ app.get('/sample-data', getData);
 
 db.open(DB_PATH)
   .then(() => app.listen(PORT, () => console.log(`App listening on port ${PORT}`)))
-  .catch((err) => console.error(err.stack));
+  .catch((err) => { if (NODE_ENV === 'development') console.error(err.stack); });
 
 function getFilmReviews(req, res) {
   res.send('Not Implemented');

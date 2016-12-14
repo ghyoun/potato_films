@@ -1,7 +1,6 @@
 const app = require('../index.js');
 
-const expect = require('chai').expect,
-      request = require('supertest')(app);
+const request = require('supertest')(app);
 
 function ok(expression, message) {
   if (!expression) throw new Error(message);
@@ -17,22 +16,22 @@ describe('Reviews API', function() {
           {
             id: 190,
             rating: 2,
-            content: "Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel."
+            content: 'Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel.'
           },
           {
             id: 9705,
             rating: 5,
-            content: "Constructs a character who is insignificant and at the same time boring as the silly bungling inventor."
+            content: 'Constructs a character who is insignificant and at the same time boring as the silly bungling inventor.'
           },
           {
             id: 24401,
             rating: 1,
-            content: "Seems balmy and occasionally quixotic as the wanting invisible guardian angel."
+            content: 'Seems balmy and occasionally quixotic as the wanting invisible guardian angel.'
           },
           {
             id: 25268,
             rating: 5,
-            content: "Comes across as brassy and hysterical as the excellent heroic scientist."
+            content: 'Comes across as brassy and hysterical as the excellent heroic scientist.'
           }
         ],
         meta: {
@@ -52,22 +51,22 @@ describe('Reviews API', function() {
             {
               id: 25268,
               rating: 5,
-              content: "Comes across as brassy and hysterical as the excellent heroic scientist."
+              content: 'Comes across as brassy and hysterical as the excellent heroic scientist.'
             },
             {
               id: 24401,
               rating: 1,
-              content: "Seems balmy and occasionally quixotic as the wanting invisible guardian angel."
+              content: 'Seems balmy and occasionally quixotic as the wanting invisible guardian angel.'
             },
             {
               id: 9705,
               rating: 5,
-              content: "Constructs a character who is insignificant and at the same time boring as the silly bungling inventor."
+              content: 'Constructs a character who is insignificant and at the same time boring as the silly bungling inventor.'
             },
             {
               id: 190,
               rating: 2,
-              content: "Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel."
+              content: 'Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel.'
             }
           ],
           meta: {
@@ -86,22 +85,22 @@ describe('Reviews API', function() {
             {
               id: 9705,
               rating: 5,
-              content: "Constructs a character who is insignificant and at the same time boring as the silly bungling inventor."
+              content: 'Constructs a character who is insignificant and at the same time boring as the silly bungling inventor.'
             },
             {
               id: 25268,
               rating: 5,
-              content: "Comes across as brassy and hysterical as the excellent heroic scientist."
+              content: 'Comes across as brassy and hysterical as the excellent heroic scientist.'
             },
             {
               id: 190,
               rating: 2,
-              content: "Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel."
+              content: 'Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel.'
             },
             {
               id: 24401,
               rating: 1,
-              content: "Seems balmy and occasionally quixotic as the wanting invisible guardian angel."
+              content: 'Seems balmy and occasionally quixotic as the wanting invisible guardian angel.'
             }
           ],
           meta: {
@@ -122,12 +121,12 @@ describe('Reviews API', function() {
             {
               id: 9705,
               rating: 5,
-              content: "Constructs a character who is insignificant and at the same time boring as the silly bungling inventor."
+              content: 'Constructs a character who is insignificant and at the same time boring as the silly bungling inventor.'
             },
             {
               id: 25268,
               rating: 5,
-              content: "Comes across as brassy and hysterical as the excellent heroic scientist."
+              content: 'Comes across as brassy and hysterical as the excellent heroic scientist.'
             }
           ],
           meta: {
@@ -146,17 +145,17 @@ describe('Reviews API', function() {
             {
               id: 25268,
               rating: 5,
-              content: "Comes across as brassy and hysterical as the excellent heroic scientist."
+              content: 'Comes across as brassy and hysterical as the excellent heroic scientist.'
             },
             {
               id: 190,
               rating: 2,
-              content: "Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel."
+              content: 'Turns in a performance that is oblivious if not spectacular as the muddled reluctant guardian angel.'
             },
             {
               id: 24401,
               rating: 1,
-              content: "Seems balmy and occasionally quixotic as the wanting invisible guardian angel."
+              content: 'Seems balmy and occasionally quixotic as the wanting invisible guardian angel.'
             }
           ],
           meta: {
@@ -172,21 +171,27 @@ describe('Reviews API', function() {
       request
         .get('/films/notarealroute')
         .expect(404)
-        .end(done);
+        .expect(function(res) {
+          ok('message' in res.body, '"message" key missing');
+        }).end(done);
     });
 
     it('handles invalid id', function(done) {
       request
         .get('/films/notanid/reviews')
         .expect(422)
-        .end(done);
+        .expect(function(res) {
+          ok('message' in res.body, '"message" key missing');
+        }).end(done);
     });
 
     it('handles invalid query params', function(done) {
       request
         .get('/films/19/reviews?orderBy=notacolumn&sort=notasort&offset=notanoffset&limit=notalimit')
         .expect(422)
-        .end(done);
+        .expect(function(res) {
+          ok('message' in res.body, '"message" key missing');
+        }).end(done);
     });
   });
 });
