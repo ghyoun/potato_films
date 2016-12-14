@@ -3,6 +3,10 @@ const app = require('../index.js');
 const expect = require('chai').expect,
       request = require('supertest')(app);
 
+function ok(expression, message) {
+  if (!expression) throw new Error(message);
+}
+
 describe('Reviews API', function() {
   it('has param defaults', function(done) {
     request
@@ -160,6 +164,29 @@ describe('Reviews API', function() {
             offset: 1
           }
         }, done);
+    });
+  });
+
+  describe('error handling', function() {
+    it('handles missing routes', function(done) {
+      request
+        .get('/films/notarealroute')
+        .expect(404)
+        .end(done);
+    });
+
+    it('handles invalid id', function(done) {
+      request
+        .get('/films/notanid/reviews')
+        .expect(422)
+        .end(done);
+    });
+
+    it('handles invalid query params', function(done) {
+      request
+        .get('/films/19/reviews?order_by=notacolumn&sort=notasort&offset=notanoffset&limit=notalimit')
+        .expect(422)
+        .end(done);
     });
   });
 });

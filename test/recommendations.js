@@ -218,4 +218,27 @@ describe('Recommendations API', function() {
         }, done);
     });
   });
+
+  describe('error handling', function() {
+    it('handles missing routes', function(done) {
+      request
+        .get('/films/notarealroute')
+        .expect(404)
+        .end(done);
+    });
+
+    it('handles invalid id', function(done) {
+      request
+        .get('/films/notanid/recommendations')
+        .expect(422)
+        .end(done);
+    });
+
+    it('handles invalid query params', function(done) {
+      request
+        .get('/films/19/recommendations?offset=notanoffset&limit=notalimit')
+        .expect(422)
+        .end(done);
+    });
+  });
 });
