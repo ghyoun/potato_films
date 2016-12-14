@@ -49,7 +49,7 @@ To run integration tests, run: `$ npm test`
 
 Satisfy the two user stories below and make the provided tests pass.
 
-Keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
+To the best of your abilities, adhere to the provided [styleguide](styleguide.md).  Also, keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
 
 Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) code based on the result of the request. Each API endpoint should also handle failure, and the server should handle missing routes.
 
