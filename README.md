@@ -6,31 +6,31 @@
 
 ## Overview
 
-You work for FreshPotatoes.com, a website that collects anonymous reviews about films.  Their online platform allows administrators to create, read, edit, and delete data relating to films, and allows users to view film data and create/edit their personal reviews.
+You work for FreshPotatoes.com, a website where users write reviews for actors and movies.  
 
-FreshPotatoes.com needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API to be built.
+The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API they want you to build.
 
-Read through the instructions below, fork/clone the codebase, and submit a pull request when ready!
+Fork this repo, read through the instructions, and get to work! Submit a pull request when ready.
 
 ---
 
 ## Codebase
 
-The FreshPotatoes API service is separate from their customer-facing web application.  You have been provided with starter code and tests built with Node, Express, Mocha, and SQLite, and the database schema has been created - read through the entity-relationship diagram for more context:
+The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided - read through the entity-relationship diagram for more context:
 
 <p align="center">
   <img src="https://i.imgur.com/MuWQUfS.png">
 </p>
 
-All the files needed to start the server are in this repository. The data and database are already set up in a `database.db` file.
-
-Once you’ve cloned, install the node modules: `$ npm install`
+Once you’ve cloned your fork, install the node modules: `$ npm install`
 
 Then, run your application:  `$ npm start`
 
-To run integration tests, run `$ npm test`
+To run integration tests, run: `$ npm test`
 
-### Relevant Documentation
+*NOTE*: Do not modify the test suite provided.
+
+#### Relevant Documentation
 
 * [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
 * [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
@@ -43,20 +43,18 @@ To run integration tests, run `$ npm test`
 
 ## Requirements
 
-The tech team wants you to satisfy the two user stories below by building two API endpoints and will look to see the tests you’ve been provided with have passed.
+The tech team wants you to satisfy the two user stories below:  Build two API endpoints and make the provided tests pass.
 
-To help satisfy these stories, set up your local database, query the database, setup the endpoints, and make the provided tests pass. Keep performance in mind - for the films table has 10,000 entries, and the reviews has 30,000 entries.
+Keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
 
-Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) based on the result of the request. Each API endpoint should properly handle failure, and the server should handle missing routes.
-
-*NOTE*: Do not modify the test suite provided.
+Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) code based on the result of the request. Each API endpoint should also handle failure, and the server should handle missing routes.
 
 ---
 
 
 #### User Story 1
 
-*"As an external developer, I want to access data using the FreshPotatoes API so that I can display film reviews for films my users are interested in watching."*
+*"As an external developer, I want to use the FreshPotatoes API to access and display film reviews for users browsing films on my site."*
 
 To satisfy this story: build an API endpoint that retrieves reviews of a film. The endpoint should allow developers to:
 
@@ -65,7 +63,7 @@ To satisfy this story: build an API endpoint that retrieves reviews of a film. T
 * Paginate by offset
 * Limit number of returned records
 
-Read on to see the documentation about the API endpoints, parameters, and what the expected success responses should look like.  
+API documentation is below - it includes information about the endpoints, parameters, and response formats.
 
 ###### List Reviews
 
@@ -164,9 +162,9 @@ Specifies the first entry to be returned from the collection.
 
 #### User Story 2
 
-*"As an external developer, I want to access data using the FreshPotatoes API so that I can create film recommendations for my users based on their viewing history."*
+*"As an external developer, I want to use the FreshPotatoes API to access and display recommended films based on a user's viewing history."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a given film id. The retrieved films should have been released within **15 years (± 15 years)** of the parent. The endpoint should allow developers to:
+To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a given film id. The retrieved films should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
 
 * Paginate by offset
 * Limit number of returned records
@@ -269,7 +267,7 @@ Specifies the first entry to be returned from the collection.
 
 ## Deliverables
 
-Complete the requirements above to the best of your ability.  Upload a Git repository with frequent commits and descriptive commit messages.
+Complete the requirements above to the best of your ability.  Submit a pull request with frequent commits and descriptive commit messages.
 
 ---
 
@@ -290,14 +288,14 @@ Your code will be evaluated based on the following criteria:
     <td>Functionality</td>
     <td>Whether output appears and behaves as specified</td>
     <td>Performance against provided tests </td>
-    <td>Provided feature and unit tests</td>
+    <td>Code is run against test suite</td>
     <td>50%</td>
   </tr>
   <tr>
     <td>Efficiency</td>
     <td>Computational effort required to run code</td>
     <td>Complexity, speed, # service calls </td>
-    <td>Cyclomatic/ Halstead metrics; runtime</td>
+    <td>Cyclomatic/Halstead metrics; runtime</td>
     <td>25%</td>
   </tr>
   <tr>
