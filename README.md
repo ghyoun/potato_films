@@ -94,7 +94,7 @@ Possible values: asc, desc
 <strong>Default: ASC</strong></td>
   </tr>
   <tr>
-    <td>order_by</td>
+    <td>orderBy</td>
     <td>string</td>
     <td>(optional)
 The data field of the “review” data to sort by.

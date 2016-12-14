@@ -79,7 +79,7 @@ describe('Reviews API', function() {
 
     it('can sort by best rating', function(done) {
       request
-        .get('/films/19/reviews?sort=desc&order_by=rating')
+        .get('/films/19/reviews?sort=desc&orderBy=rating')
         .expect('Content-Type', /json/)
         .expect(200, {
           reviews: [
@@ -115,7 +115,7 @@ describe('Reviews API', function() {
   describe('pagination', function() {
     it('can limit results', function(done) {
       request
-        .get('/films/19/reviews?order_by=rating&sort=DESC&limit=2')
+        .get('/films/19/reviews?orderBy=rating&sort=DESC&limit=2')
         .expect('Content-Type', /json/)
         .expect(200, {
           reviews: [
@@ -139,7 +139,7 @@ describe('Reviews API', function() {
 
     it('can offset results', function(done) {
       request
-        .get('/films/19/reviews?order_by=rating&sort=DESC&offset=1')
+        .get('/films/19/reviews?orderBy=rating&sort=DESC&offset=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           reviews: [
@@ -184,7 +184,7 @@ describe('Reviews API', function() {
 
     it('handles invalid query params', function(done) {
       request
-        .get('/films/19/reviews?order_by=notacolumn&sort=notasort&offset=notanoffset&limit=notalimit')
+        .get('/films/19/reviews?orderBy=notacolumn&sort=notasort&offset=notanoffset&limit=notalimit')
         .expect(422)
         .end(done);
     });
