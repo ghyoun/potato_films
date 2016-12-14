@@ -43,7 +43,7 @@ To run integration tests, run: `$ npm test`
 
 ## Requirements
 
-The tech team wants you to satisfy the two user stories below:  Build two API endpoints and make the provided tests pass.
+Satisfy the two user stories below and make the provided tests pass.
 
 Keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
 
