@@ -6,7 +6,7 @@
 
 ## Overview
 
-You work for FreshPotatoes.com, a website where users write reviews for actors and movies.  
+You work for FreshPotatoes.com, a website where users write reviews for artists and films.  
 
 The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API they want you to build.
 
