@@ -16,7 +16,7 @@ Fork this repo, read through the instructions, and get to work! Submit a pull re
 
 ## Codebase and Database
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided, and the tech team has provided a functional endpoint, `/get-data`, to sample data, if needed. 
+The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided, and the tech team has provided a functional endpoint, `/sample-data`, to sample data, if needed. 
 
 Read through the entity-relationship diagram for more context:
 
