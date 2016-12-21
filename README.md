@@ -128,22 +128,22 @@ Specifies the first entry to be returned from the collection.
     {
       "id": 10,
       "rating": 3,
-      “description”: “This movie was ok”
+      “content”: “This movie was ok”
     },
     {
       "id": 120,
       "rating": 5,
-      “description”: “This movie was great”
+      “content”: “This movie was great”
     },
     {
       "id": 124,
       "rating": 1,
-      “description”: “The film was terrible”
+      “content”: “The film was terrible”
     },
     {
       "id": 201,
       "rating": 4,
-      “description”: “Movie was very good”
+      “content”: “Movie was very good”
     }
   ],
   "meta": {
