@@ -99,7 +99,7 @@ Possible values: asc, desc
     <td>orderBy</td>
     <td>string</td>
     <td>(optional)
-The data field of the “review” data to sort by.
+The data field of the "review" data to sort by.
 Possible values: date, rating
 <strong>Default: id</strong></td>
   </tr>
@@ -128,22 +128,22 @@ Specifies the first entry to be returned from the collection.
     {
       "id": 10,
       "rating": 3,
-      “content”: “This movie was ok”
+      "content": "This movie was ok"
     },
     {
       "id": 120,
       "rating": 5,
-      “content”: “This movie was great”
+      "content": "This movie was great"
     },
     {
       "id": 124,
       "rating": 1,
-      “content”: “The film was terrible”
+      "content": "The film was terrible"
     },
     {
       "id": 201,
       "rating": 4,
-      “content”: “Movie was very good”
+      "content": "Movie was very good"
     }
   ],
   "meta": {
@@ -220,34 +220,34 @@ Specifies the first entry to be returned from the collection.
 {
   "recommendations" : [
     {
-      “id”: 109,
-      “title”: “Reservoir Dogs”,
-      “releaseDate”: “09-02-1992”,
-      “genre”: “Action”,
-      “directors”: [“Quentin Tarantino”],
-      “starring”: [“Harvey Keitel”, “Tim Roth”, “Michael Madsen” ],
-      “averageRating”: 4.2,
-      “reviews”: 202
+      "id": 109,
+      "title": "Reservoir Dogs",
+      "releaseDate": "09-02-1992",
+      "genre": "Action",
+      "directors": ["Quentin Tarantino"],
+      "starring": ["Harvey Keitel", "Tim Roth", "Michael Madsen" ],
+      "averageRating": 4.2,
+      "reviews": 202
     },
     {
-      “id”: 102,
-      “title”: “Jackie Brown”,
-      “releaseDate”: “09-15-1997”,
-      “genre”: “Action”,
-      “directors”: [“Quentin Tarantino”],
-      “starring”: ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
-      “averageRating”: 3.8,
-      “reviews”: 404
+      "id": 102,
+      "title": "Jackie Brown",
+      "releaseDate": "09-15-1997",
+      "genre": "Action",
+      "directors": ["Quentin Tarantino"],
+      "starring": ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
+      "averageRating": 3.8,
+      "reviews": 404
     },
     {
-      “Id”: 85,
-      “title”: “True Romance”,
-      “releaseDate”: “09-25-1993”,
-      “genre”: “Action”,
-      “directors”: [“Quentin Tarantino”],
-      “starring”: ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
-      “averageRating”: 4.0,
-      “reviews”: 165098
+      "Id": 85,
+      "title": "True Romance",
+      "releaseDate": "09-25-1993",
+      "genre": "Action",
+      "directors": ["Quentin Tarantino"],
+      "starring": ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
+      "averageRating": 4.0,
+      "reviews": 165098
     }
   ],
   "meta": {
