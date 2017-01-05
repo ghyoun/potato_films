@@ -20,13 +20,4 @@ function getFilmRecommendations(req, res) {
   res.send('Not Implemented');
 }
 
-// To sample data; change name of table to see other data
-function getData(req, res) {
-  db.all(`SELECT * FROM artists LIMIT 10`)
-    .then((data) => {
-      console.log('Data from SQLite:', data);
-    })
-  res.send('Data Sample Sent To Console');
-}
-
 module.exports = app;
