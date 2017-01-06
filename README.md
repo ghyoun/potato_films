@@ -16,7 +16,9 @@ Fork this repo, read through the instructions, and get to work! Submit a pull re
 
 ## Codebase and Database
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided, and the tech team has provided a functional endpoint, `/sample-data`, to sample data, if needed. 
+The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided. To interact with the database: `$ sqlite3 db/database.db`.
+
+*NOTE*: Do not write to the database.
 
 Read through the entity-relationship diagram for more context:
 
@@ -32,7 +34,7 @@ Then, run your application:  `$ npm start`
 
 To run integration tests, run: `$ npm test`
 
-*NOTE*: Do not modify the test suite provided.
+*NOTE*: Feel free to write your own tests in a separate testing file, but do not modify the test suite provided.
 
 #### Relevant Documentation
 

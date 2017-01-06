@@ -6,7 +6,6 @@ const { PORT=3000, NODE_ENV='development', DB_PATH='./db/database.db' } = proces
 
 app.get('/films/:id/reviews', getFilmReviews);
 app.get('/films/:id/recommendations', getFilmRecommendations);
-app.get('/sample-data', getData);
 
 db.open(DB_PATH)
   .then(() => app.listen(PORT, () => console.log(`App listening on port ${PORT}`)))
