@@ -41,8 +41,6 @@ To run integration tests, run: `$ npm test`
 * [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
 * [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
 * [SQLite docs](https://www.sqlite.org/docs.html)
-* [NPM sqlite package](https://www.npmjs.com/package/sqlite)
-* [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
 * [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
 
 ---
