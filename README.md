@@ -74,7 +74,7 @@ Ordered by relevance, the recommended films returned should include films with t
 
 ###### Considerations
 
-This endpoint is priority because of recent FreshPotato partnerships. These partners offer film streaming services, and aggregate user viewing data to identify the most popular films. Partners will combine their data with data provided by the FreshPotatos API recommendation engine. In the future, FreshPotatoes intends to invest more resources into building upon this endpoint.
+This endpoint is priority because of recent a recent FreshPotato partnership. The partner offers a film streaming service, and aggregates user viewing data to identify popular films. The partner will combine their data with data provided by the FreshPotatos API recommendation engine. In the future, FreshPotatoes intends to invest more resources into building upon this endpoint.
 
 ###### List Recommendations
 
