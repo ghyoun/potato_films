@@ -59,9 +59,9 @@ The endpoint should handle failure, and the server should handle missing routes.
 
 #### User Story
 
-*"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films that are related to a film of choice."*
+*"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves the top-rated film recommendations based on a given film id. The retrieved films should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
+To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations based on a given film id. The films retrieved should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
 
 * Paginate by offset
 * Limit number of returned records
@@ -75,7 +75,7 @@ Ordered by relevance, the recommended films returned should include films with t
 
 ###### Considerations
 
-This endpoint is priority because of recent FreshPotato partnerships. These partners offer film streaming services, and aggregate user viewing data to identify the most popular films. Partners will combine their data with data provided by the FreshPotatos API recommendation engine. In the future, FreshPotatoes intends to invest more resources into building upon this endpoint. 
+This endpoint is priority because of recent FreshPotato partnerships. These partners offer film streaming services, and aggregate user viewing data to identify the most popular films. Partners will combine their data with data provided by the FreshPotatos API recommendation engine. In the future, FreshPotatoes intends to invest more resources into building upon this endpoint.
 
 ###### List Recommendations
 
