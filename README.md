@@ -43,6 +43,7 @@ To run integration tests, run: `$ npm test`
 * [SQLite docs](https://www.sqlite.org/docs.html)
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
 * [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
+* [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
 
 ---
 
