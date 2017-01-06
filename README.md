@@ -49,124 +49,15 @@ To run integration tests, run: `$ npm test`
 
 ## Requirements
 
-Satisfy the two user stories below and make the provided tests pass.
+Satisfy the user story below and make the provided tests pass.
 
 To the best of your abilities, adhere to the provided [styleguide](styleguide.md).  Also, keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
 
-Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) code based on the result of the request. Each API endpoint should also handle failure, and the server should handle missing routes.
+The endpoint should handle failure, and the server should handle missing routes.
 
 ---
 
-
-#### User Story 1
-
-*"As an external developer, I want to use the FreshPotatoes API to access and display film reviews for users browsing films on my site."*
-
-To satisfy this story: build an API endpoint that retrieves reviews of a film. The endpoint should allow developers to:
-
-* Sort ascending or descending
-* Order by another field
-* Paginate by offset
-* Limit number of returned records
-
-API documentation is below - it includes information about the endpoints, parameters, and response formats.
-
-###### List Reviews
-
-Returns a matching film and a list of the latest reviews for that film
-
-```
-
-GET /films/:id/reviews
-
-```
-
-**Parameters**
-
-<table>
-  <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Description</td>
-  </tr>
-  <tr>
-    <td>sort</td>
-    <td>string</td>
-    <td>(optional)
-The sort order of the "review" data.
-Possible values: asc, desc
-<strong>Default: ASC</strong></td>
-  </tr>
-  <tr>
-    <td>orderBy</td>
-    <td>string</td>
-    <td>(optional)
-The data field of the "review" data to sort by.
-Possible values: date, rating
-<strong>Default: id</strong></td>
-  </tr>
-  <tr>
-    <td>limit</td>
-    <td>integer</td>
-    <td>(optional)
-The desired number of review results returned.
- <strong>Default: 10</strong></td>
-  </tr>
-  <tr>
-    <td>offset</td>
-    <td>integer</td>
-    <td>(optional)
-Specifies the first entry to be returned from the collection.
- <strong>Default: 0</strong></td>
-  </tr>
-</table>
-
-
-**Successful Response**
-
-```
-{
-  "reviews" : [
-    {
-      "id": 10,
-      "rating": 3,
-      "content": "This movie was ok"
-    },
-    {
-      "id": 120,
-      "rating": 5,
-      "content": "This movie was great"
-    },
-    {
-      "id": 124,
-      "rating": 1,
-      "content": "The film was terrible"
-    },
-    {
-      "id": 201,
-      "rating": 4,
-      "content": "Movie was very good"
-    }
-  ],
-  "meta": {
-    "limit": 10,
-    "offset": 0
-  }
-}
-```
-
-**Failure Response**
-
-```
-{
-  "message" : "Return an explicit error here"
-}
-```
-
----
-
-
-#### User Story 2
+#### User Story 
 
 *"As an external developer, I want to use the FreshPotatoes API to access and display recommended films based on a user's viewing history."*
 
