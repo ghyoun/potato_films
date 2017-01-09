@@ -60,7 +60,7 @@ The endpoint should handle failure, and the server should handle missing routes.
 
 *"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations based on a given film id. The films retrieved should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
+To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations. Top-rated films are films with an average review rating that is **greater than 4.0** and have a minimum of 10 reviews. The films retrieved should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
 
 * Paginate by offset
 * Limit number of returned records
