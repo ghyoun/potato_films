@@ -52,7 +52,9 @@ Satisfy the user story below and make the provided tests pass.
 
 To the best of your abilities, adhere to the provided [styleguide](styleguide.md).  Also, keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
 
-The endpoint should handle failure, and the server should handle missing routes.
+The endpoint should handle client/server failure, and the server should handle missing routes.
+
+Finally, be mindful that the FreshPotatoes tech team wants extensible, production-level code.
 
 ---
 
@@ -71,10 +73,6 @@ Ordered by relevance, the recommended films returned should include films with t
 1. genre
 2. director
 3. cast members
-
-###### Considerations
-
-This endpoint is priority because of recent a recent FreshPotato partnership. The partner offers a film streaming service, and aggregates user viewing data to identify popular films. The partner will combine their data with data provided by the FreshPotatos API recommendation engine. In the future, FreshPotatoes intends to invest more resources into building upon this endpoint.
 
 ###### List Recommendations
 
