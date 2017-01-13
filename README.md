@@ -58,7 +58,7 @@ To the best of your abilities, adhere to the provided [styleguide](styleguide.md
 
 The endpoint should handle client/server failure, and the server should handle missing routes.
 
-Finally, be mindful that the FreshPotatoes tech team wants extensible, production-level code.
+Finally, be mindful that the FreshPotatoes tech team is looking for production-level code, so keep the following in mind: maintainability, extensibility, testability, and performance.
 
 ---
 
@@ -72,11 +72,7 @@ To satisfy this story: build a recommendations API endpoint that retrieves top-r
 * Limit number of returned records
 * Filter by genre
 
-Ordered by relevance, the recommended films returned should include films with the same:
-
-1. genre
-2. director
-3. cast members
+The recommended films returned should include films with the same genre, director, *or* cast member as the parent film.
 
 ###### List Recommendations
 
