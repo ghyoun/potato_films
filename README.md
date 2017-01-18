@@ -1,6 +1,6 @@
 # <img src="https://potatoes.ahdb.org.uk/sites/default/files/150824_Potato_4PRINT-Kindred-v1-A5%20cropped.jpg" width="40px"> FreshPotatoes.com
 
-* **Our tech stack**: Node, JavaScript, Express, SQLite
+* **Our tech stack**: Node, JavaScript, Express, SQLite, Sequelize
 * **Time allowed**: 3 hours
 * **Rules**: Open book (use whatever docs you need!)
 
@@ -8,7 +8,7 @@
 
 You work for FreshPotatoes.com, a website where users write reviews for artists and films.  
 
-The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API they want you to build.
+The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API endpoint they want you to build.
 
 Fork this repo, read through the instructions, and get to work! Submit a pull request when ready.
 
@@ -16,7 +16,7 @@ Fork this repo, read through the instructions, and get to work! Submit a pull re
 
 ## Codebase and Database
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
+The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.  The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
 
 *NOTE*: Do not write to the database.
 
@@ -131,7 +131,7 @@ Specifies the first entry to be returned from the collection.
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
       "starring": ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
-      "averageRating": 3.8,
+      "averageRating": 4.1,
       "reviews": 404
     },
     {
