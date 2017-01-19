@@ -81,7 +81,7 @@ Finally, the endpoint should handle for:
 * Client/server failure
 * Missing routes
 
-###### List Recommendations
+##### List Recommendations
 
 Returns a list of top-rated films released within **15 years (± 15 years)** related to the matched film.
 
