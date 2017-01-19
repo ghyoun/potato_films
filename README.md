@@ -54,11 +54,9 @@ You may use either the base `sqlite` package or the `Sequelize` ORM for your sol
 
 Satisfy the user story below and make the provided tests pass.
 
-To the best of your abilities, adhere to the provided [styleguide](styleguide.md).  Also, keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
+To the best of your abilities, adhere to the [styleguide](styleguide.md) provided.  
 
-The endpoint should handle client/server failure, and the server should handle missing routes.
-
-Finally, be mindful that the FreshPotatoes tech team is looking for production-level code, so keep the following in mind: maintainability, extensibility, testability, and performance.
+Be mindful that the FreshPotatoes tech team is looking for production-level code. As you implement your solution, think about maintainability, extensibility, security, and performance.
 
 ---
 
@@ -66,13 +64,22 @@ Finally, be mindful that the FreshPotatoes tech team is looking for production-l
 
 *"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations. Top-rated films are films with an average review rating that is **greater than 4.0** and have a **minimum of 10 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
+To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations. Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 10 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
+
+The recommended films returned should:
+
+* Include films with the same genre, director, *or* cast member as the parent film
+* Be ordered by matching genres, then directors, then cast members
+
+The endpoint should allow developers to:
 
 * Paginate by offset
-* Limit number of returned records
-* Filter by genre
+* Limit the number of returned records
 
-The recommended films returned should include films with the same genre, director, *or* cast member as the parent film.
+Finally, the endpoint should handle for:
+
+* client/server failure
+* missing routes
 
 ###### List Recommendations
 
@@ -166,7 +173,7 @@ Specifies the first entry to be returned from the collection.
 
 ## Deliverables
 
-Complete the requirements above to the best of your ability.  Submit a pull request with frequent commits and descriptive commit messages.
+Submit a pull request with frequent commits and descriptive commit messages.
 
 ---
 
