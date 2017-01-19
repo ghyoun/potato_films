@@ -1,6 +1,6 @@
 # <img src="https://potatoes.ahdb.org.uk/sites/default/files/150824_Potato_4PRINT-Kindred-v1-A5%20cropped.jpg" width="40px"> FreshPotatoes.com
 
-* **Our tech stack**: Node, JavaScript, Express, SQLite
+* **Our tech stack**: Node, JavaScript, Express, SQLite, Sequelize
 * **Time allowed**: 3 hours
 * **Rules**: Open book (use whatever docs you need!)
 
@@ -8,7 +8,7 @@
 
 You work for FreshPotatoes.com, a website where users write reviews for artists and films.  
 
-The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API they want you to build.
+The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API endpoint they want you to build.
 
 Fork this repo, read through the instructions, and get to work! Submit a pull request when ready.
 
@@ -16,7 +16,9 @@ Fork this repo, read through the instructions, and get to work! Submit a pull re
 
 ## Codebase and Database
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, and SQLite.  The database schema is also provided, and the tech team has provided a functional endpoint, `/sample-data`, to sample data, if needed. 
+The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.  The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
+
+*NOTE*: Do not write to the database.
 
 Read through the entity-relationship diagram for more context:
 
@@ -32,7 +34,7 @@ Then, run your application:  `$ npm start`
 
 To run integration tests, run: `$ npm test`
 
-*NOTE*: Do not modify the test suite provided.
+*NOTE*: Do not modify the existing tests provided.
 
 #### Relevant Documentation
 
@@ -41,143 +43,43 @@ To run integration tests, run: `$ npm test`
 * [SQLite docs](https://www.sqlite.org/docs.html)
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
 * [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
+* [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
+
+You may use either the base `sqlite` package or the `Sequelize` ORM for your solution. Basic examples are provided.
 
 ---
 
 
 ## Requirements
 
-Satisfy the two user stories below and make the provided tests pass.
+Satisfy the user story below and make the provided tests pass.
 
-To the best of your abilities, adhere to the provided [styleguide](styleguide.md).  Also, keep performance in mind - the films table has 10,000 entries, and the reviews has 30,000 entries.
+To the best of your abilities, adhere to the [styleguide](styleguide.md) provided.  
 
-Make sure to return the proper [HTTP response code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) code based on the result of the request. Each API endpoint should also handle failure, and the server should handle missing routes.
-
----
-
-
-#### User Story 1
-
-*"As an external developer, I want to use the FreshPotatoes API to access and display film reviews for users browsing films on my site."*
-
-To satisfy this story: build an API endpoint that retrieves reviews of a film. The endpoint should allow developers to:
-
-* Sort ascending or descending
-* Order by another field
-* Paginate by offset
-* Limit number of returned records
-
-API documentation is below - it includes information about the endpoints, parameters, and response formats.
-
-###### List Reviews
-
-Returns a matching film and a list of the latest reviews for that film
-
-```
-
-GET /films/:id/reviews
-
-```
-
-**Parameters**
-
-<table>
-  <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Description</td>
-  </tr>
-  <tr>
-    <td>sort</td>
-    <td>string</td>
-    <td>(optional)
-The sort order of the "review" data.
-Possible values: asc, desc
-<strong>Default: ASC</strong></td>
-  </tr>
-  <tr>
-    <td>orderBy</td>
-    <td>string</td>
-    <td>(optional)
-The data field of the "review" data to sort by.
-Possible values: date, rating
-<strong>Default: id</strong></td>
-  </tr>
-  <tr>
-    <td>limit</td>
-    <td>integer</td>
-    <td>(optional)
-The desired number of review results returned.
- <strong>Default: 10</strong></td>
-  </tr>
-  <tr>
-    <td>offset</td>
-    <td>integer</td>
-    <td>(optional)
-Specifies the first entry to be returned from the collection.
- <strong>Default: 0</strong></td>
-  </tr>
-</table>
-
-
-**Successful Response**
-
-```
-{
-  "reviews" : [
-    {
-      "id": 10,
-      "rating": 3,
-      "content": "This movie was ok"
-    },
-    {
-      "id": 120,
-      "rating": 5,
-      "content": "This movie was great"
-    },
-    {
-      "id": 124,
-      "rating": 1,
-      "content": "The film was terrible"
-    },
-    {
-      "id": 201,
-      "rating": 4,
-      "content": "Movie was very good"
-    }
-  ],
-  "meta": {
-    "limit": 10,
-    "offset": 0
-  }
-}
-```
-
-**Failure Response**
-
-```
-{
-  "message" : "Return an explicit error here"
-}
-```
+Be mindful that the FreshPotatoes tech team is looking for production-level code. As you implement your solution, think about maintainability, extensibility, security, and performance.
 
 ---
 
+#### User Story
 
-#### User Story 2
+*"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
 
-*"As an external developer, I want to use the FreshPotatoes API to access and display recommended films based on a user's viewing history."*
+To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations. Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 10 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
 
-To satisfy this story: build a recommendations API endpoint that retrieves film recommendations based on a given film id. The retrieved films should have been released within **15 years (± 15 years)** of the parent film. The endpoint should allow developers to:
+The recommended films returned should:
+
+* Include films with the same genre, director, *or* cast member as the parent film
+* Be ordered by matching genres, then directors, then cast members
+
+The endpoint should allow developers to:
 
 * Paginate by offset
-* Limit number of returned records
+* Limit the number of returned records
 
-Ordered by relevance, the recommended films returned should include films with the same:
+Finally, the endpoint should handle for:
 
-1. genre
-2. director
-3. cast members
+* client/server failure
+* missing routes
 
 ###### List Recommendations
 
@@ -236,7 +138,7 @@ Specifies the first entry to be returned from the collection.
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
       "starring": ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
-      "averageRating": 3.8,
+      "averageRating": 4.1,
       "reviews": 404
     },
     {
@@ -271,7 +173,7 @@ Specifies the first entry to be returned from the collection.
 
 ## Deliverables
 
-Complete the requirements above to the best of your ability.  Submit a pull request with frequent commits and descriptive commit messages.
+Submit a pull request with frequent commits and descriptive commit messages.
 
 ---
 
