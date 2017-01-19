@@ -78,8 +78,8 @@ The endpoint should allow developers to:
 
 Finally, the endpoint should handle for:
 
-* client/server failure
-* missing routes
+* Client/server failure
+* Missing routes
 
 ###### List Recommendations
 
