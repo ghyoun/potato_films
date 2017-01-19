@@ -10,72 +10,36 @@ function ok(expression, message) {
 describe('Recommendations API', function() {
   it('has param defaults', function(done) {
     request
-      .get('/films/2/recommendations')
+      .get('/films/8/recommendations')
       .expect('Content-Type', /json/)
       .expect(200, 
         {
           recommendations: [
             {
-              id: 1532,
-              title: "Exodus Brain Human Resources 4",
-              releaseDate: "2013-12-04",
-              genre: "Music",
+              id: 579,
+              title: "Agent Silk Brain Doctor",
+              releaseDate: "1992-01-24",
+              genre: "Drama",
               directors: [
-                "Courtney Bradtke",
-                "Ernest Beier"
+                "Gia Kessler"
               ],
               starring: [
-                "Lavern Buckridge",
-                "Damon Kub",
-                "Brigitte Leuschke",
-                "Alysha Huel"
+                "Theresia Gulgowski"
               ],
-              averageRating: 4,
-              reviews: 24
+              averageRating: 4.2727272727272725,
+              reviews: 11
             },
             {
-              id: 10016,
-              title: "General Deathlok Knight Designer 2",
-              releaseDate: "2012-04-06",
-              genre: "Music",
+              id: 22,
+              title: "Mr Mimic Philosopher",
+              releaseDate: "1988-08-30",
+              genre: "Family",
               directors: [
-                "Declan Kohler",
-                "Linnie Lockman"
+                "Jerome Cassin"
               ],
               starring: [],
-              averageRating: 4.285714285714286,
+              averageRating: 4.071428571428571,
               reviews: 14
-            },
-            {
-              id: 333,
-              title: "The Ronin Doctor",
-              releaseDate: "2007-08-28",
-              genre: "Music",
-              directors: [
-                "Esteban Jacobson"
-              ],
-              starring: [
-                "Nellie Trantow",
-                "Donna O'Reilly",
-                "Sarina Upton"
-              ],
-              averageRating: 4.125,
-              reviews: 24
-            },
-            {
-              id: 2042,
-              title: "General Rogue Writer",
-              releaseDate: "2013-02-02",
-              genre: "Music",
-              directors: [
-                "Reed Huel"
-              ],
-              starring: [
-                "Tommie Cole",
-                "Ernestine Turner"
-              ],
-              averageRating: 4,
-              reviews: 20
             }
           ],
           meta: {
@@ -88,44 +52,27 @@ describe('Recommendations API', function() {
   describe('pagination', function() {
     it('can limit results', function(done) {
       request
-        .get('/films/2/recommendations?limit=2')
+        .get('/films/8/recommendations?limit=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 1532,
-              title: "Exodus Brain Human Resources 4",
-              releaseDate: "2013-12-04",
-              genre: "Music",
+              id: 579,
+              title: "Agent Silk Brain Doctor",
+              releaseDate: "1992-01-24",
+              genre: "Drama",
               directors: [
-                "Courtney Bradtke",
-                "Ernest Beier"
+                "Gia Kessler"
               ],
               starring: [
-                "Lavern Buckridge",
-                "Damon Kub",
-                "Brigitte Leuschke",
-                "Alysha Huel"
+                "Theresia Gulgowski"
               ],
-              averageRating: 4,
-              reviews: 24
-            },
-            {
-              id: 10016,
-              title: "General Deathlok Knight Designer 2",
-              releaseDate: "2012-04-06",
-              genre: "Music",
-              directors: [
-                "Declan Kohler",
-                "Linnie Lockman"
-              ],
-              starring: [],
-              averageRating: 4.285714285714286,
-              reviews: 14
+              averageRating: 4.2727272727272725,
+              reviews: 11
             }
           ],
           meta: {
-            limit: 2,
+            limit: 1,
             offset: 0
           }
         }, done);
@@ -133,45 +80,26 @@ describe('Recommendations API', function() {
 
     it('can offset results', function(done) {
       request
-        .get('/films/2/recommendations?limit=2&offset=2')
+        .get('/films/8/recommendations?offset=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 333,
-              title: "The Ronin Doctor",
-              releaseDate: "2007-08-28",
-              genre: "Music",
+              id: 22,
+              title: "Mr Mimic Philosopher",
+              releaseDate: "1988-08-30",
+              genre: "Family",
               directors: [
-                "Esteban Jacobson"
+                "Jerome Cassin"
               ],
-              starring: [
-                "Nellie Trantow",
-                "Donna O'Reilly",
-                "Sarina Upton"
-              ],
-              averageRating: 4.125,
-              reviews: 24
-            },
-            {
-              id: 2042,
-              title: "General Rogue Writer",
-              releaseDate: "2013-02-02",
-              genre: "Music",
-              directors: [
-                "Reed Huel"
-              ],
-              starring: [
-                "Tommie Cole",
-                "Ernestine Turner"
-              ],
-              averageRating: 4,
-              reviews: 20
+              starring: [],
+              averageRating: 4.071428571428571,
+              reviews: 14
             }
           ],
           meta: {
-            limit: 2,
-            offset: 2
+            limit: 10,
+            offset: 1
           }
         }, done);
     });
