@@ -45,7 +45,7 @@ To run integration tests, run: `$ npm test`
 * [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
 * [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
 
-You may use either the base `sqlite` package or the `Sequelize` ORM for your solution. Basic examples are provided.
+You may use either the base `sqlite` package or the `Sequelize` ORM for your solution. 
 
 ---
 
