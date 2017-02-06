@@ -1,7 +1,5 @@
 # <img src="https://potatoes.ahdb.org.uk/sites/default/files/150824_Potato_4PRINT-Kindred-v1-A5%20cropped.jpg" width="40px"> FreshPotatoes.com
 
-CHANGES FOR V10
-
 * **Our tech stack**: Node, JavaScript, Express, SQLite, Sequelize
 * **Time allowed**: 3 hours
 * **Rules**: Open book (use whatever docs you need!)
