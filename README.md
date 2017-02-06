@@ -8,7 +8,7 @@ CHANGES FOR V10
 
 ## Overview
 
-You work for FreshPotatoes.com, a website where users write reviews for artists and films.  
+You work for FreshPotatoes.com, a Wiki for information related to films and artists.  
 
 The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API endpoint they want you to build.
 
@@ -16,19 +16,11 @@ Fork this repo, read through the instructions, and get to work! Submit a pull re
 
 ---
 
-## Codebase and Database
+## The FreshPotatoes Tech
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.  The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
+#### Codebase
 
-*NOTE*: Do not write to the database.
-
-Read through the entity-relationship diagram for more context:
-
-<p align="center">
-  <img src="https://i.imgur.com/MuWQUfS.png">
-</p>
-
-
+The FreshPotatoes API service will be separate from their customer-facing web application.  In this repo, you'll find the code that will power their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.
 
 Once you’ve cloned your fork, install the node modules: `$ npm install`
 
@@ -38,6 +30,27 @@ To run integration tests, run: `$ npm test`
 
 *NOTE*: Do not modify the existing tests provided.
 
+#### Database
+
+
+The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
+
+*NOTE*: Do not write to the database.
+
+Read through the entity-relationship diagram for more context:
+
+<p align="center">
+  <img src="https://i.imgur.com/eAuzbPZ.png">
+</p>
+
+#### 3rd Party API
+
+The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review table.  This table, pictured below, can be accessed via ReviewMonkey's API.
+
+<p align="center">
+  <img src="https://i.imgur.com/jIBH0jh.png">
+</p>
+
 #### Relevant Documentation
 
 * [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
@@ -46,8 +59,9 @@ To run integration tests, run: `$ npm test`
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
 * [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
 * [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
+* [ReviewMonkey API](#)
 
-You may use either the base `sqlite` package or the `Sequelize` ORM for your solution. 
+You may use either the base `sqlite` package or the `Sequelize` ORM for your solution.
 
 ---
 
@@ -70,8 +84,8 @@ To satisfy this story: build a recommendations API endpoint that retrieves top-r
 
 The recommended films returned should:
 
-* Include films with the same genre, director, *or* cast member as the parent film
-* Be ordered by matching genres, then directors, then cast members
+* Include films with the same genre or director
+* Be ordered by matching genres then directors
 
 The endpoint should allow developers to:
 
