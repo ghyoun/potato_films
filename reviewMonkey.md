@@ -17,7 +17,7 @@ GET http://credentials-api.generalassemb.ly/4576f55f-c427-4cfc-a11c-5bfe914ca6c1
     <td>Name</td>
     <td>Type</td>
     <td>Description</td>
-    <td>Example url</td>
+    <td>Example query</td>
   </tr>
   <tr>
     <td>films</td>
