@@ -43,11 +43,69 @@ Read through the entity-relationship diagram for more context:
 
 #### 3rd Party API
 
-The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review table.  This table, pictured below, can be accessed via ReviewMonkey's API.
+The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review API described below.
 
-<p align="center">
-  <img src="https://i.imgur.com/jIBH0jh.png">
-</p>
+##### List Reviews
+
+Returns a list of all reviews that match films by ids.
+
+```
+
+GET /reviews
+
+```
+
+**Parameters**
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>films_ids</td>
+    <td>array of integers</td>
+    <td><strong>(required)</strong>
+The reviews to return by film_id.
+  </tr>
+</table>
+
+**Successful Response**
+```
+{ film_id: 8,
+  reviews:
+   [ { id: 6436,
+       author: 'Emely Koepp',
+       content: 'Turns in a performance that is unperceiving and abnormal as the forgetful plucky girl.',
+       rating: 3 },
+     { id: 15175,
+       author: 'Annetta Schmidt',
+       content: 'Turns in a performance that is obscure but boorish as the dynamic oddball.',
+       rating: 3 },
+     { id: 36635,
+       author: 'Chanelle Stokes',
+       content: 'Comes across as debauched and shamelessly ordinary as the vivacious plucky girl.',
+       rating: 2 },
+     { id: 51111,
+       author: 'Lorena Jacobs',
+       content: 'Turns in a performance that is delusive but demonic as the wrathful snoop.',
+       rating: 2 },
+     { id: 69726,
+       author: 'Ashleigh Hodkiewicz',
+       content: 'Comes across as hateful if not fearless as the broad igor.',
+       rating: 3 },
+     { id: 76120,
+       author: 'Ignacio Gleichner',
+       content: 'Turns in a performance that is impervious if not ludicrous as the ossified toadie.',
+       rating: 3 },
+     { id: 91201,
+       author: 'Gennaro Harber',
+       content: 'Comes across as senseless and puny as the strange mr fixit.',
+       rating: 3 }
+   ]
+}
+```
 
 #### Relevant Documentation
 
@@ -141,7 +199,6 @@ Specifies the first entry to be returned from the collection.
       "releaseDate": "09-02-1992",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Harvey Keitel", "Tim Roth", "Michael Madsen" ],
       "averageRating": 4.2,
       "reviews": 202
     },
@@ -151,17 +208,15 @@ Specifies the first entry to be returned from the collection.
       "releaseDate": "09-15-1997",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
       "averageRating": 4.1,
       "reviews": 404
     },
     {
-      "Id": 85,
+      "id": 85,
       "title": "True Romance",
       "releaseDate": "09-25-1993",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
       "averageRating": 4.0,
       "reviews": 165098
     }
