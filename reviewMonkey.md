@@ -23,7 +23,7 @@ GET http://credentials-api.generalassemb.ly/4576f55f-c427-4cfc-a11c-5bfe914ca6c1
     <td>films</td>
     <td>array of integers (comma separated)</td>
     <td><strong>(required)</strong>The reviews to return by film_id.</td>
-    <td>`?films=7173,8`</td>
+    <td>?films=7173,8</td>
   </tr>
 </table>
 
