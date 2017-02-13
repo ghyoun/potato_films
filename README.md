@@ -141,7 +141,7 @@ To satisfy this story: build a recommendations API endpoint that retrieves top-r
 The recommended films returned should:
 
 * Include films with the same genre or director
-* Be ordered by matching genres, then directors, then cast members
+* Be ordered by matching genres followed by directors.
 
 The endpoint should allow developers to:
 
