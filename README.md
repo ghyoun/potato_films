@@ -6,9 +6,9 @@
 
 ## Overview
 
-You work for FreshPotatoes.com, a Wiki for information related to films and artists.  
+You work for FreshPotatoes, a Wiki for information related to films and artists.  
 
-The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API endpoint they want you to build.
+The FreshPotatoes team has defined a RESTful API endpoint they want you to build. They want to allow external partners - like Netflix and HBOGo - to access their data.  
 
 Fork this repo, read through the instructions, and get to work! Submit a pull request when ready.
 
@@ -43,7 +43,7 @@ Read through the entity-relationship diagram for more context:
 
 #### 3rd Party API
 
-The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review API described here [ReviewMonkey API](reviewMonkey.md).
+The FreshPotatoes database has been developed using keys from a third-party service where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use movie review data from this third-party API, described [here](third-party-api.md).
 
 #### Relevant Documentation
 
@@ -51,9 +51,8 @@ The FreshPotatoes database has been developed using keys from a third-party serv
 * [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
 * [SQLite docs](https://www.sqlite.org/docs.html)
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
-* [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
 * [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
-* [ReviewMonkey API](reviewMonkey.md)
+* [3rd Party API docs](third-party-api.md)
 
 You may use either the base `sqlite` package or the `Sequelize` ORM for your solution.
 
