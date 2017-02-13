@@ -43,7 +43,7 @@ Read through the entity-relationship diagram for more context:
 
 #### 3rd Party API
 
-The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review API described below.
+The FreshPotatoes database has been developed using keys from a third-party service called ReviewMonkey, a place where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use data from ReviewMonkey's review API described here [ReviewMonkey API](reviewMonkey.md).
 
 #### Relevant Documentation
 
