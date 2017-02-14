@@ -75,7 +75,7 @@ Be mindful that the FreshPotatoes tech team is looking for production-level code
 
 To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations.
 
-Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 10 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
+Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 4 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
 
 The recommended films returned should:
 
