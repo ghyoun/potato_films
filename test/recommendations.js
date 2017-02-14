@@ -10,36 +10,27 @@ function ok(expression, message) {
 describe('Recommendations API', function() {
   it('has param defaults', function(done) {
     request
-      .get('/films/8/recommendations')
+      .get('/films/38/recommendations')
       .expect('Content-Type', /json/)
-      .expect(200, 
+      .expect(200,
         {
           recommendations: [
             {
-              id: 579,
-              title: "Agent Silk Brain Doctor",
-              releaseDate: "1992-01-24",
-              genre: "Drama",
-              directors: [
-                "Gia Kessler"
-              ],
-              starring: [
-                "Theresia Gulgowski"
-              ],
-              averageRating: 4.2727272727272725,
-              reviews: 11
-            },
-            {
-              id: 22,
-              title: "Mr Mimic Philosopher",
-              releaseDate: "1988-08-30",
-              genre: "Family",
-              directors: [
-                "Jerome Cassin"
-              ],
-              starring: [],
-              averageRating: 4.071428571428571,
-              reviews: 14
+              id: 1164,
+              title: "Shang Chi Biologist",
+              releaseDate: "1980-05-02",
+              genre: "Thriller",
+              directors: [ "Nicola Brown" ],
+              averageRating: 4.375,
+              reviews: 8
+            }, {
+              id: 9136,
+              title: "Agent Binary Librarian",
+              releaseDate: "2000-11-17",
+              genre: "Mystery",
+              directors: [ "Nicola Brown" ],
+              averageRating: 4.5,
+              reviews: 4
             }
           ],
           meta: {
@@ -52,23 +43,18 @@ describe('Recommendations API', function() {
   describe('pagination', function() {
     it('can limit results', function(done) {
       request
-        .get('/films/8/recommendations?limit=1')
+        .get('/films/38/recommendations?limit=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 579,
-              title: "Agent Silk Brain Doctor",
-              releaseDate: "1992-01-24",
-              genre: "Drama",
-              directors: [
-                "Gia Kessler"
-              ],
-              starring: [
-                "Theresia Gulgowski"
-              ],
-              averageRating: 4.2727272727272725,
-              reviews: 11
+              id: 1164,
+              title: "Shang Chi Biologist",
+              releaseDate: "1980-05-02",
+              genre: "Thriller",
+              directors: [ "Nicola Brown" ],
+              averageRating: 4.375,
+              reviews: 8
             }
           ],
           meta: {
@@ -80,21 +66,18 @@ describe('Recommendations API', function() {
 
     it('can offset results', function(done) {
       request
-        .get('/films/8/recommendations?offset=1')
+        .get('/films/38/recommendations?offset=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 22,
-              title: "Mr Mimic Philosopher",
-              releaseDate: "1988-08-30",
-              genre: "Family",
-              directors: [
-                "Jerome Cassin"
-              ],
-              starring: [],
-              averageRating: 4.071428571428571,
-              reviews: 14
+              id: 9136,
+              title: "Agent Binary Librarian",
+              releaseDate: "2000-11-17",
+              genre: "Mystery",
+              directors: [ "Nicola Brown" ],
+              averageRating: 4.5,
+              reviews: 4
             }
           ],
           meta: {
