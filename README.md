@@ -10,8 +10,6 @@ You work for FreshPotatoes.com, a wiki-based website for films and artists.
 
 The FreshPotatoes team has defined a RESTful API endpoint they want you to build. They want to allow external partners - like Netflix and HBOGo - to access their data.  
 
-Clone this repo, read through the instructions, and get to work!
-
 Send your work as a zip attachment to
 <a href="mailto:credentials@ga.co">credentials@ga.co</a>.  In the subject line, include your name and the company's name, if applicable.
 
