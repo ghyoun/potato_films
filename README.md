@@ -6,29 +6,22 @@
 
 ## Overview
 
-You work for FreshPotatoes.com, a website where users write reviews for artists and films.  
+You work for FreshPotatoes.com, a wiki-based website for films and artists.  
 
-The website team needs your help. They want to allow external partners - like Netflix and HBOGo - to access their data.  The FreshPotatoes team has defined a RESTful API endpoint they want you to build.
+The FreshPotatoes team has defined a RESTful API endpoint they want you to build. They want to allow external partners - like Netflix and HBOGo - to access their data.  
 
-Fork this repo, read through the instructions, and get to work! Submit a pull request when ready.
+Send your work as a zip attachment to
+<a href="mailto:credentials@ga.co">credentials@ga.co</a>.  In the subject line, include your name and the company's name, if applicable.
 
 ---
 
-## Codebase and Database
+## The FreshPotatoes Tech
 
-The FreshPotatoes API service is separate from their customer-facing web application.  In this repo, you'll find the code that powers their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.  The database schema is also provided. To interact with the database console: `$ sqlite3 db/database.db`.
+#### Codebase
 
-*NOTE*: Do not write to the database.
+The FreshPotatoes API service will be separate from their customer-facing web application.  In this repo, you'll find the code that will power their API: starter code and tests built with Node, Express, Mocha, SQLite, and Sequelize.
 
-Read through the entity-relationship diagram for more context:
-
-<p align="center">
-  <img src="https://i.imgur.com/MuWQUfS.png">
-</p>
-
-
-
-Once you’ve cloned your fork, install the node modules: `$ npm install`
+Once you’ve cloned, install the node modules: `$ npm install`
 
 Then, run your application:  `$ npm start`
 
@@ -36,16 +29,32 @@ To run integration tests, run: `$ npm test`
 
 *NOTE*: Do not modify the existing tests provided.
 
+#### Database
+
+The database schema is also provided. To interact with the database: `$ sqlite3 db/database.db`.
+
+*NOTE*: Do not write to the database.
+
+Read through the entity-relationship diagram for more context:
+
+<p align="center">
+  <img src="https://i.imgur.com/eAuzbPZ.png">
+</p>
+
+You may use either the `sqlite` package or the `Sequelize` ORM for your solution.
+
+#### 3rd Party API
+
+The FreshPotatoes database has been developed using keys from a third-party service where fans can write reviews about their favorite movies.  As part of this project, FreshPotatoes wants you to use movie review data from this third-party API, documented [here](third-party-api.md).
+
 #### Relevant Documentation
 
 * [Node.js v6 docs](https://nodejs.org/dist/latest-v6.x/docs/api/)
 * [ExpressJS API docs](http://expressjs.com/en/4x/api.html)
 * [SQLite docs](https://www.sqlite.org/docs.html)
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
-* [NPM sqlite package API reference](https://github.com/mapbox/node-sqlite3/wiki/API)
 * [Sequelize docs](http://docs.sequelizejs.com/en/v3/)
-
-You may use either the base `sqlite` package or the `Sequelize` ORM for your solution. 
+* [3rd Party API docs](third-party-api.md)
 
 ---
 
@@ -62,14 +71,16 @@ Be mindful that the FreshPotatoes tech team is looking for production-level code
 
 #### User Story
 
-*"As a third-party developer who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
+*"As a developer, who doesn't work for FreshPotatoes, I want to use the FreshPotatoes API to get a list of recommended films related to one film."*
 
-To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations. Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 10 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
+To satisfy this story: build a recommendations API endpoint that retrieves top-rated film recommendations.
+
+Top-rated films are defined as films with an average review rating **greater than 4.0** and have a **minimum of 4 reviews**. The films retrieved should have been released within **15 years (± 15 years)** of the parent film.
 
 The recommended films returned should:
 
-* Include films with the same genre, director, *or* cast member as the parent film
-* Be ordered by matching genres, then directors, then cast members
+* Include films with the same genre or director
+* Be ordered by matching genres followed by directors
 
 The endpoint should allow developers to:
 
@@ -127,7 +138,6 @@ Specifies the first entry to be returned from the collection.
       "releaseDate": "09-02-1992",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Harvey Keitel", "Tim Roth", "Michael Madsen" ],
       "averageRating": 4.2,
       "reviews": 202
     },
@@ -137,17 +147,15 @@ Specifies the first entry to be returned from the collection.
       "releaseDate": "09-15-1997",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Pam Grier", "Samuel L. Jackson", "Robert Forster"],
       "averageRating": 4.1,
       "reviews": 404
     },
     {
-      "Id": 85,
+      "id": 85,
       "title": "True Romance",
       "releaseDate": "09-25-1993",
       "genre": "Action",
       "directors": ["Quentin Tarantino"],
-      "starring": ["Christian Slater", "Patricia Arquette", "Dennis Hopper"],
       "averageRating": 4.0,
       "reviews": 165098
     }
@@ -173,7 +181,7 @@ Specifies the first entry to be returned from the collection.
 
 ## Deliverables
 
-Submit a pull request with frequent commits and descriptive commit messages.
+Email your work to credentials@ga.co.  Your repository should include frequent commits and descriptive commit messages.
 
 ---
 
@@ -187,28 +195,24 @@ Your code will be evaluated based on the following criteria:
     <td><strong>Criteria</strong></td>
     <td><strong>Description</strong></td>
     <td><strong>Measured by</strong></td>
-    <td><strong>How?</strong></td>
     <td><strong>Weight</strong></td>
   </tr>
   <tr>
     <td>Functionality</td>
     <td>Whether output appears and behaves as specified</td>
     <td>Performance against provided tests </td>
-    <td>Code is run against test suite</td>
     <td>50%</td>
   </tr>
   <tr>
     <td>Efficiency</td>
     <td>Computational effort required to run code</td>
     <td>Complexity, speed, # service calls </td>
-    <td>Cyclomatic/Halstead metrics; runtime</td>
     <td>25%</td>
   </tr>
   <tr>
     <td>Style</td>
     <td>Whether code adheres to styleguide and is easily maintained</td>
-    <td>Consistency, readability, maintainability</td>
-    <td>Linting violations, readability metrics, dependencies</td>
+    <td>Consistency, linting violations</td>
     <td>25%</td>
   </tr>
 </table>
