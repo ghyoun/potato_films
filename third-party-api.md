@@ -1,4 +1,4 @@
-### ReviewMonkey API Docs
+### 3rd Party API Docs
 
 ##### List Reviews
 
@@ -17,22 +17,18 @@ GET http://credentials-api.generalassemb.ly/4576f55f-c427-4cfc-a11c-5bfe914ca6c1
     <td>Name</td>
     <td>Type</td>
     <td>Description</td>
-    <td>Example url</td>
+    <td>Example query</td>
   </tr>
   <tr>
     <td>films</td>
     <td>array of integers (comma separated)</td>
-    <td><strong>(required)</strong>The reviews to return by film_id.</td>
-    <td>?films=7173,8</td>
+    <td><strong>(required)</strong> The reviews to return by film_id.</td>
+    <td>?films=8</td>
   </tr>
 </table>
 
 **Successful Response**
-```
 
-GET http://credentials-api.generalassemb.ly/4576f55f-c427-4cfc-a11c-5bfe914ca6c1?films=8
-
-```
 
 ```
 [
