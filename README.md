@@ -109,20 +109,19 @@ GET /films/:film_id/recommendations
     <td>Name</td>
     <td>Type</td>
     <td>Description</td>
+    <td>Default Value</td>
   </tr>
   <tr>
     <td>limit</td>
     <td>integer</td>
-    <td>(optional)
-The desired number of results returned.
- <strong>Default: 10</strong></td>
+    <td>(optional) The desired number of results returned.</td>
+    <td>10</td>
   </tr>
   <tr>
     <td>offset</td>
     <td>integer</td>
-    <td>(optional)
-Specifies the first entry to be returned from the collection.
- <strong>Default: 1</strong></td>
+    <td>(optional) Specifies the first entry to be returned from the collection.</td>
+    <td>1</td>
   </tr>
 </table>
 
@@ -181,7 +180,7 @@ Specifies the first entry to be returned from the collection.
 
 ## Deliverables
 
-Email your work to credentials@ga.co.  Your repository should include frequent commits and descriptive commit messages.
+Email your work to credentials@ga.co.  Your repository should include logical commits and descriptive commit messages.
 
 ---
 
