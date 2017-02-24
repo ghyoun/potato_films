@@ -10,28 +10,38 @@ function ok(expression, message) {
 describe('Recommendations API', function() {
   it('has param defaults', function(done) {
     request
-      .get('/films/38/recommendations')
+      .get('/films/7264/recommendations')
       .expect('Content-Type', /json/)
       .expect(200,
         {
           recommendations: [
             {
-              id: 1164,
-              title: "Shang Chi Biologist",
-              releaseDate: "1980-05-02",
-              genre: "Thriller",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.375,
-              reviews: 8
-            }, {
-              id: 9136,
-              title: "Agent Binary Librarian",
-              releaseDate: "2000-11-17",
-              genre: "Mystery",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.5,
-              reviews: 4
-            }
+              id: 7406,
+              title: 'Agent Deathstroke Teacher',
+              releaseDate: '2001-10-19',
+              genre: 'Western',
+              directors: [ 'Fiona Stehr' ],
+              averageRating: 4.6,
+              reviews: 5
+            },
+            {
+              id: 8298,
+              title: 'Colossus Strike Police Officer',
+              releaseDate: '2014-01-10',
+              genre: 'Western',
+              directors: [ 'Zella Sauer' ],
+              averageRating: 4.57,
+              reviews: 7
+            },
+            {
+              id: 8451,
+              title: 'Carnage Actor',
+              releaseDate: '2006-02-15',
+              genre: 'Western',
+              directors: [ 'Jovani Bashirian' ],
+              averageRating: 4.33,
+              reviews: 6
+            },
           ],
           meta: {
             limit: 10,
@@ -43,18 +53,18 @@ describe('Recommendations API', function() {
   describe('pagination', function() {
     it('can limit results', function(done) {
       request
-        .get('/films/38/recommendations?limit=1')
+        .get('/films/7264/recommendations?limit=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 1164,
-              title: "Shang Chi Biologist",
-              releaseDate: "1980-05-02",
-              genre: "Thriller",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.375,
-              reviews: 8
+              id: 7406,
+              title: 'Agent Deathstroke Teacher',
+              releaseDate: '2001-10-19',
+              genre: 'Western',
+              directors: [ 'Fiona Stehr' ],
+              averageRating: 4.6,
+              reviews: 5
             }
           ],
           meta: {
@@ -66,18 +76,27 @@ describe('Recommendations API', function() {
 
     it('can offset results', function(done) {
       request
-        .get('/films/38/recommendations?offset=1')
+        .get('/films/7264/recommendations?offset=1')
         .expect('Content-Type', /json/)
         .expect(200, {
           recommendations: [
             {
-              id: 9136,
-              title: "Agent Binary Librarian",
-              releaseDate: "2000-11-17",
-              genre: "Mystery",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.5,
-              reviews: 4
+              id: 8298,
+              title: 'Colossus Strike Police Officer',
+              releaseDate: '2014-01-10',
+              genre: 'Western',
+              directors: [ 'Zella Sauer' ],
+              averageRating: 4.57,
+              reviews: 7
+            },
+            {
+              id: 8451,
+              title: 'Carnage Actor',
+              releaseDate: '2006-02-15',
+              genre: 'Western',
+              directors: [ 'Jovani Bashirian' ],
+              averageRating: 4.33,
+              reviews: 6
             }
           ],
           meta: {
