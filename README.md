@@ -4,17 +4,20 @@
 
 FreshPotatoes.com is a wiki-based website for films and artists.  
 
-The FreshPotatoes team has defined a RESTful API endpoint they want you to build. The endpoint will allow external partners, like Netflix, to access artist and film data.
+The FreshPotatoes team has defined a RESTful API endpoint they want you to build. The endpoint will allow external partners, like Netflix, to access FreshPotato artist and film data.
+
+In this README, you'll find information about:
+
+* [What to build](#what-to-build)
+  * [API Specifications](#api-specifications)
+* [Technologies to use](#FreshPotatoes-technologies)
+* [What to turn in](#what-to-turn-in)
+* [How to submit your work](#how-to-submit-your-work)
 
 ---
-## Requirements
+## What To Build
 
-Satisfy the user story below.  You have been given a suite of failing tests - make them pass.
-
-Be mindful that the FreshPotatoes tech team is looking for production-level code. As you implement your solution, think about maintainability, extensibility, security, and performance.
-
-To the best of your abilities, adhere to the [styleguide](styleguide.md) provided.
-
+Build a recommendations API endpoint that retrieves top-rated film recommendations.  You have been given a suite of failing tests - make them pass.
 
 #### User Story
 
@@ -22,19 +25,19 @@ To the best of your abilities, adhere to the [styleguide](styleguide.md) provide
 
 #### Acceptance Criteria
 
-Build a recommendations API endpoint that retrieves top-rated film recommendations.
-
-1. Recommended films must have:
+1) Recommended films must have:
   * The same genre as the parent film
   * A minimum of 4 reviews
   * An average rating greater than 4.0
   * Been released within 15 years, before or after the parent film
 
-2. The application should allow developers to:
+
+2) The application should allow developers to:
   * Paginate by offset
   * Limit the number of returned records
 
-3. Finally, the application should handle for:
+
+3) The application should handle for:
   * Client/server failure
   * Missing routes
 
@@ -167,18 +170,26 @@ As part of this project, you must use this API to access film review data.  The 
 
 ---
 
+## What To Turn In
+
+The FreshPotatoes tech team will look for:
+
+* **A git repository** - Once you've downloaded the codebase, initiate a git repository.  As you work, make logical, frequent commits and descriptive commit messages.
+
+* **Production-level code**. - As you implement your solution, think about maintainability, extensibility, security, and performance.
+
+* **Consistent code**. To the best of your abilities, adhere to the [styleguide](styleguide.md) provided.
 
 
+---
 
-## Submission and Deliverables
+## How To Submit Your Work
 
-Once you've downloaded the codebase, initiate a git repository.  As you work, make logical, frequent commits and descriptive commit messages.
-
-Email your work to credentials@ga.co as a zip attachment to
+Email your repository as a zip attachment to
 <a href="mailto:credentials@ga.co">credentials@ga.co</a>.  In the subject line, include your name and the company's name, if applicable.
 
 ---
 
-## Licensing
+#### Licensing
 All content is licensed under a CC­BY­NC­SA 4.0 license.
 All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
