@@ -1,5 +1,6 @@
 const sqlite = require('sqlite'),
       Sequelize = require('sequelize'),
+      request = require('request'),
       express = require('express'),
       app = express();
 
