@@ -11,7 +11,6 @@ In this README, you'll find information about:
 * [What to build](#what-to-build)
   * [API Specifications](#api-specifications)
 * [Technologies to use](#freshpotatoes-technologies)
-FreshPotatoes Technologies
 * [What to turn in](#what-to-turn-in)
 * [How to submit your work](#how-to-submit-your-work)
 
