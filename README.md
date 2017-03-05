@@ -15,6 +15,7 @@ In this README, you'll find information about:
 * [How to submit your work](#how-to-submit-your-work)
 
 ---
+
 ## What To Build
 
 Build a recommendations API endpoint that retrieves top-rated film recommendations.  You have been given a suite of failing tests - make them pass.
@@ -27,21 +28,18 @@ Build a recommendations API endpoint that retrieves top-rated film recommendatio
 
 1) Recommended films must have:
   * The same genre as the parent film
-  * A minimum of 4 reviews
+  * A minimum of 5 reviews
   * An average rating greater than 4.0
   * Been released within 15 years, before or after the parent film
-
+  * A sort order based on film id (order by film id)
 
 2) The application should allow developers to:
   * Paginate by offset
   * Limit the number of returned records
 
-
 3) The application should handle for:
   * Client/server failure
   * Missing routes
-
-
 
 ---
 
@@ -129,10 +127,7 @@ Specifies the first entry to be returned from the collection.
 }
 ```
 
-
-
 ---
-
 
 ## FreshPotatoes Technologies
 
@@ -166,6 +161,7 @@ As part of this project, you must use this API to access film review data.  The 
 * [SQLite](https://www.sqlite.org/docs.html)
 * [NPM sqlite package](https://www.npmjs.com/package/sqlite)
 * [Sequelize](http://docs.sequelizejs.com/en/v3/)
+* [Request docs](https://github.com/request/request)
 * [Third-Party API](third-party-api.md)
 
 ---
@@ -179,7 +175,6 @@ The FreshPotatoes tech team will look for:
 * **Production-level code**. - As you implement your solution, think about maintainability, extensibility, security, and performance.
 
 * **Consistent code**. To the best of your abilities, adhere to the [styleguide](styleguide.md) provided.
-
 
 ---
 

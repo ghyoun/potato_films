@@ -2,89 +2,159 @@
 
 const app = require('../index.js');
 const request = require('supertest')(app);
+const expect = require('chai').expect;
 
 function ok(expression, message) {
   if (!expression) throw new Error(message);
 }
 
 describe('Recommendations API', function() {
-  it('has param defaults', function(done) {
+  describe('returns successful response defaults', function() {
+    let cachedResponse;
+
+    before(function(done) {
+      request.get('/films/7264/recommendations').end(function(err, res) {
+        cachedResponse = res;
+        done();
+      });
+    });
+
+    it('status 200', function() {
+      expect(cachedResponse.status).to.equal(200);
+    });
+
+    it('application/json Content-Type', function() {
+      expect(cachedResponse.header['content-type']).to.match(/application\/json/);
+    });
+
+    describe('recommendations key', function() {
+      it('exists', function() {
+        expect(cachedResponse.body).to.include.keys('recommendations');
+      });
+
+      it('is an array', function() {
+        expect(Array.isArray(cachedResponse.body.recommendations)).to.be.true;
+      });
+
+      it('has lenght of 3', function() {
+        expect(cachedResponse.body.recommendations).to.have.length.of(3);
+      });
+    });
+
+    describe('meta key', function() {
+      it('exists', function() {
+        expect(cachedResponse.body).to.include.keys('meta');
+      });
+
+      it('is an object', function() {
+        expect(cachedResponse.body.meta).to.be.an('object');
+      });
+
+      it('contains limit key', function() {
+        expect(cachedResponse.body.meta).to.include.keys('limit');
+      });
+
+      it('contains offset key', function() {
+        expect(cachedResponse.body.meta).to.include.keys('offset');
+      });
+    });
+  });
+
+  it('returns desired recommendations', function(done) {
     request
-      .get('/films/38/recommendations')
+      .get('/films/7264/recommendations')
       .expect('Content-Type', /json/)
-      .expect(200,
+      .expect(
+        200,
         {
           recommendations: [
             {
-              id: 1164,
-              title: "Shang Chi Biologist",
-              releaseDate: "1980-05-02",
-              genre: "Thriller",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.375,
-              reviews: 8
-            }, {
-              id: 9136,
-              title: "Agent Binary Librarian",
-              releaseDate: "2000-11-17",
-              genre: "Mystery",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.5,
-              reviews: 4
-            }
+              id: 7406,
+              title: 'Agent Deathstroke Teacher',
+              releaseDate: '2001-10-19',
+              genre: 'Western',
+              directors: [ 'Fiona Stehr' ],
+              averageRating: 4.6,
+              reviews: 5,
+            },
+            {
+              id: 8298,
+              title: 'Colossus Strike Police Officer',
+              releaseDate: '2014-01-10',
+              genre: 'Western',
+              directors: [ 'Zella Sauer' ],
+              averageRating: 4.57,
+              reviews: 7,
+            },
+            {
+              id: 8451,
+              title: 'Carnage Actor',
+              releaseDate: '2006-02-15',
+              genre: 'Western',
+              directors: [ 'Jovani Bashirian' ],
+              averageRating: 4.33,
+              reviews: 6,
+            },
           ],
-          meta: {
-            limit: 10,
-            offset: 0
-          }
-        }, done);
+          meta: { limit: 10, offset: 0 },
+        }, done
+      );
   });
 
   describe('pagination', function() {
     it('can limit results', function(done) {
       request
-        .get('/films/38/recommendations?limit=1')
+        .get('/films/7264/recommendations?limit=1')
         .expect('Content-Type', /json/)
-        .expect(200, {
-          recommendations: [
-            {
-              id: 1164,
-              title: "Shang Chi Biologist",
-              releaseDate: "1980-05-02",
-              genre: "Thriller",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.375,
-              reviews: 8
-            }
-          ],
-          meta: {
-            limit: 1,
-            offset: 0
-          }
-        }, done);
+        .expect(
+          200,
+          {
+            recommendations: [
+              {
+                id: 7406,
+                title: 'Agent Deathstroke Teacher',
+                releaseDate: '2001-10-19',
+                genre: 'Western',
+                directors: [ 'Fiona Stehr' ],
+                averageRating: 4.6,
+                reviews: 5,
+              },
+            ],
+            meta: { limit: 1, offset: 0 },
+          }, done
+        );
     });
 
     it('can offset results', function(done) {
       request
-        .get('/films/38/recommendations?offset=1')
+        .get('/films/7264/recommendations?offset=1')
         .expect('Content-Type', /json/)
-        .expect(200, {
-          recommendations: [
-            {
-              id: 9136,
-              title: "Agent Binary Librarian",
-              releaseDate: "2000-11-17",
-              genre: "Mystery",
-              directors: [ "Nicola Brown" ],
-              averageRating: 4.5,
-              reviews: 4
-            }
-          ],
-          meta: {
-            limit: 10,
-            offset: 1
-          }
-        }, done);
+        .expect(
+          200,
+          {
+            recommendations: [
+              {
+                id: 8298,
+                title: 'Colossus Strike Police Officer',
+                releaseDate: '2014-01-10',
+                genre: 'Western',
+                directors: [ 'Zella Sauer' ],
+                averageRating: 4.57,
+                reviews: 7,
+              },
+              {
+                id: 8451,
+                title: 'Carnage Actor',
+                releaseDate: '2006-02-15',
+                genre: 'Western',
+                directors: [ 'Jovani Bashirian' ],
+                averageRating: 4.33,
+                reviews: 6,
+              },
+            ],
+            meta: { limit: 10, offset: 1 },
+          }, done
+        );
     });
   });
 
@@ -95,7 +165,8 @@ describe('Recommendations API', function() {
         .expect(404)
         .expect(function(res) {
           ok('message' in res.body, '"message" key missing');
-        }).end(done);
+        })
+        .end(done);
     });
 
     it('handles invalid id', function(done) {
@@ -104,7 +175,8 @@ describe('Recommendations API', function() {
         .expect(422)
         .expect(function(res) {
           ok('message' in res.body, '"message" key missing');
-        }).end(done);
+        })
+        .end(done);
     });
 
     it('handles invalid query params', function(done) {
@@ -113,7 +185,8 @@ describe('Recommendations API', function() {
         .expect(422)
         .expect(function(res) {
           ok('message' in res.body, '"message" key missing');
-        }).end(done);
+        })
+        .end(done);
     });
   });
 });

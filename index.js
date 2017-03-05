@@ -1,5 +1,6 @@
 const sqlite = require('sqlite'),
       Sequelize = require('sequelize'),
+      request = require('request'),
       express = require('express'),
       app = express();
 
@@ -15,7 +16,7 @@ app.get('/films/:id/recommendations', getFilmRecommendations);
 
 // ROUTE HANDLER
 function getFilmRecommendations(req, res) {
-  res.send('Not Implemented');
+  res.status(500).send('Not Implemented');
 }
 
 module.exports = app;
