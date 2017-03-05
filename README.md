@@ -31,7 +31,7 @@ Build a recommendations API endpoint that retrieves top-rated film recommendatio
   * A minimum of 5 reviews
   * An average rating greater than 4.0
   * Been released within 15 years, before or after the parent film
-  * Ordered by film id
+  * A sort order based on film id (order by film id)
 
 2) The application should allow developers to:
   * Paginate by offset
