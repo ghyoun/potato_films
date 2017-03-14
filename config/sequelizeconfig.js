@@ -1,10 +1,35 @@
 const sqlite = require('sqlite'),
-      Sequelize = require('sequelize');
+      Sequelize = require('sequelize'),
+      path = require('path'),
+      fs = require('fs');
 
 var sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: './db/database.db',
 });
 
+var rootPath = path.normalize(__dirname + '/..');
 
-module.exports = sequelize;
+var modelsDir = rootPath + '/app/models';
+
+global.db = {
+  Sequelize: Sequelize,
+  sequelize: sequelize,
+}
+
+// loop through all files in models directory ignoring hidden files and this file
+fs.readdirSync(modelsDir)
+    .filter(function (file) {
+        return (file.indexOf('.') !== 0) && (file !== 'index.js')
+    })
+    // import model files and save model names
+    .forEach(function (file) {
+        console.log('Loading model file ' + file);
+        var model = sequelize.import(path.join(modelsDir, file));
+        global.db[model.name] = model;
+    });
+
+sequelize.sync();
+
+
+module.exports = global.db;
