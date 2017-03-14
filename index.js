@@ -6,7 +6,8 @@ const sqlite = require('sqlite'),
 
 const { PORT=3000, NODE_ENV='development', DB_PATH='./db/database.db' } = process.env;
 
-
+//I wanted to modularize this more to be scalable to add more models
+//The apps folder contains a route file, controller file, and a folder for models 
 
 
 

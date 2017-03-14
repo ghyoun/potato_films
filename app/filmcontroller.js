@@ -31,10 +31,26 @@ function FilmController() {
       });
     };
 
+    //uses req.query to get any parameters
+    //filters recommendations by the same genre-id and 15 years before, after the movie release date
     this.getFilmRecommendations = function(res, req) {
       var givenId = req.req.params.id;
       var genreId;
       var releaseDate;
+      var defaultLimit;
+      if (req.req.query.limit == null) {
+        defaultLimit = 10;
+      } else {
+        defaultLimit = req.req.query.limit;
+      }
+      var defaultOffset;
+      if (req.req.query.offset == null) {
+        defaultOffset = 0;
+      } else {
+        defaultOffset = req.req.query.offset;
+      }
+      var limitCount = defaultLimit;
+      var offsetCount = defaultOffset;
       db.Films.findAll({
         where: {
           id : givenId,
@@ -58,16 +74,15 @@ function FilmController() {
               });
             } else {
               var filteredFilms = []
-              var limitCount = 0;
-              var offsetCount = 1;
+
               for (var i = 0; i < foundFilms.length; i++) {
                 var tempDate = new Date(foundFilms[i].release_date);
                 var diff = (releaseDate - tempDate)/86400000;
-                if (diff <= 730 && diff >= -730 && limitCount < 10) {
+                if (diff <= 5478 && diff >= -5478 && limitCount > 0) {
                   if (givenId != foundFilms[i].id) {
                     if (offsetCount <= 0) {
                       filteredFilms.push(foundFilms[i]);
-                      limitCount++;
+                      limitCount--;
                     } else {
                       offsetCount--;
                     }
@@ -77,17 +92,16 @@ function FilmController() {
               res.res.json({
                 'recommendations' : filteredFilms,
                 'meta' : {
-                  "limit" : 10,
-                  "offset" : 0,
+                  "limit" : defaultLimit,
+                  "offset" : defaultOffset,
                 }
               })
             }
           });
         }
       });
-
-
     };
+
 };
 
 module.exports = new FilmController();

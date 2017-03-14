@@ -1,3 +1,6 @@
+//This configuration file is to set up sequelize using a SQLite dialect
+//Also loops through model files and imports them
+
 const sqlite = require('sqlite'),
       Sequelize = require('sequelize'),
       path = require('path'),
@@ -24,7 +27,6 @@ fs.readdirSync(modelsDir)
     })
     // import model files and save model names
     .forEach(function (file) {
-        console.log('Loading model file ' + file);
         var model = sequelize.import(path.join(modelsDir, file));
         global.db[model.name] = model;
     });
